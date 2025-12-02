@@ -27,7 +27,6 @@ Vamos a comprobar que Apache este funcionando http://127.0.0.1
 
 <img width="734" height="572" alt="image" src="https://github.com/user-attachments/assets/e2f70176-7158-497c-bb6a-cf04d3bb7eca" />
 
-<br>
 ## Instalar MySQL
 
 Instalamos MySQL
@@ -52,7 +51,6 @@ Entramos en MySQL para asegurarnos que esta activo
 
 <img width="689" height="274" alt="image" src="https://github.com/user-attachments/assets/fb9ed42b-4498-445d-9273-84ffad7d0951" />
 
-<br>
 ## Instalar PHP
 
 Instalamos PHP y librerias necesarias y comprovamos que se haya instalado de forma correcta
@@ -61,7 +59,7 @@ Instalamos PHP y librerias necesarias y comprovamos que se haya instalado de for
 
 <img width="580" height="114" alt="image" src="https://github.com/user-attachments/assets/e56e998a-943d-44dc-9dc7-6e84dd6710ad" />
 
-<br>
+
 ## Creamos un Host Virtual
 
 Creamos el directorio para el dominio y se le da la prioridad del directorio
@@ -69,3 +67,21 @@ Creamos el directorio para el dominio y se le da la prioridad del directorio
 <img width="734" height="98" alt="image" src="https://github.com/user-attachments/assets/51858520-d798-4bd8-a84f-d8f05c02f8d3" />
 
 Abrimos un nuevo archivo de configuracion en "sites-available"
+
+<img width="728" height="64" alt="image" src="https://github.com/user-attachments/assets/f3471166-d5af-4846-a28b-50d375dc7730" />
+
+Dejamos la proxima configuracion
+
+<img width="729" height="178" alt="image" src="https://github.com/user-attachments/assets/daa11b17-d9fc-42b8-ac15-e78c138d363a" />
+
+Habilitamos el sitio online nuestro y deshabilitamos el de apache predeterminado
+
+#### HABILITAR
+
+<img width="740" height="147" alt="image" src="https://github.com/user-attachments/assets/9c8cf025-9678-4d12-b88a-75bd518c69b6" />
+
+#### DESHABILITAR
+
+<img width="740" height="121" alt="image" src="https://github.com/user-attachments/assets/09a7f72c-26cf-47ff-a6b3-94749ca799fa" />
+
+
