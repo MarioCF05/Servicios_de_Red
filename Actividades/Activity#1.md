@@ -84,4 +84,17 @@ Habilitamos el sitio online nuestro y deshabilitamos el de apache predeterminado
 
 <img width="740" height="121" alt="image" src="https://github.com/user-attachments/assets/09a7f72c-26cf-47ff-a6b3-94749ca799fa" />
 
+Reinicimoa el servicio de apache
+
+<img width="724" height="235" alt="image" src="https://github.com/user-attachments/assets/217ecce5-3371-4d1f-8c26-b52dfae33f78" />
+
+Creamos un archivo html para la pagina
+
+<img width="685" height="63" alt="image" src="https://github.com/user-attachments/assets/d63c6bc3-769b-40ce-9c56-77d90a385749" />
+
+<img width="725" height="377" alt="image" src="https://github.com/user-attachments/assets/f81f802e-2f20-4115-935b-f8f5aa128c85" />
+
+# Pagina final
+
+<img width="307" height="209" alt="image" src="https://github.com/user-attachments/assets/c3a18d89-f054-4ee1-91d0-cebaccd3c021" />
 
