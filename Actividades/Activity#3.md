@@ -20,6 +20,17 @@ La diferencia entre ambos bloques de configuración radica en el orden en que se
 
 ### d. Permite el acceso de las peticiones provenientes de "10.3.0.100" con máscara "255.255.0.0"
 
+Nos metemos en "/etc/apache2/sites-available/dir1.conf" y ponemos el siguiente codigo
+<img width="715" height="212" alt="image" src="https://github.com/user-attachments/assets/7981e933-412a-4f06-b446-7a1cad414c5f" />
+
 ## 4. Modifica la configuración de forma que el acceso a dir1 se permita a "marisma.intranet" y no se permita desde 10.3.0.101"
 
+<img width="632" height="232" alt="image" src="https://github.com/user-attachments/assets/0129d911-0ff6-42de-af67-866a86f458c7" />
+
+
+
 ## 5. Modifica la configuración de forma que el acceso a dir2 se permita a "10.3.0.100/8" y no a "marisma.intranet"
+
+
+<img width="635" height="189" alt="image" src="https://github.com/user-attachments/assets/2cd201be-40b3-46b3-b002-f73a8bf4238a" />
+
