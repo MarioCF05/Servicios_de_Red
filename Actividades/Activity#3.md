@@ -2,7 +2,13 @@
 
 ## 1. Crea un directorio llamado "dir1" y otro llamado "dir2"
 
+Creo los directorios 
+
+<img width="725" height="147" alt="image" src="https://github.com/user-attachments/assets/dd6eb46c-9b03-40fc-9ab4-372af9412d0a" />
+
 ## 2. Explica qué diferencia existe entre ambos y muestra su equivalencia con la directiva Require:
+
+La diferencia entre ambos bloques de configuración radica en el orden en que se aplican las reglas de acceso. En el primer bloque Order Deny,Allow se niega el acceso por defecto a todos (Deny from All) y luego se permite únicamente a la IP 192.168.1.100 (Allow from 192.168.1.100), mientras que en el segundo bloque Order Allow,Deny se permite todo por defecto y luego se niega el acceso a todos (Deny from All), lo que termina bloqueando también la IP 192.168.1.100. Su equivalencia usando la directiva moderna Require sería: para el primer bloque <Directory /var/www/example1> Require ip 192.168.1.100</Directory> y para el segundo <Directory /var/www/example1> Require all denied</Directory>.
 
 ## 3. Para dir1
 
