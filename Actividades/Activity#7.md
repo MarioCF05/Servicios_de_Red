@@ -30,9 +30,10 @@ A lo anterior añadimos:
 
 # Uso del RewriteCond
 
-Vamos a evitar que otros enlacen tus imágenes directamente
+Este código detecta cuando alguien accede a tu sitio por HTTP y lo redirige automáticamente a la misma dirección pero con HTTPS, asegurando que todo el tráfico use conexión segura.
 
 <br>
 
+<img width="516" height="49" alt="image" src="https://github.com/user-attachments/assets/d281ecd4-f649-4307-8f64-d0a6e85a57e9" />
 
 
