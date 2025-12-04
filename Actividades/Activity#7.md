@@ -15,6 +15,13 @@ En "/etc/apache2/sites-available/000-default.conf" usamos Rewrite para que pase 
 
 # Acortar URL
 A lo anterior añadimos:
+
+<br>
+
 <img width="409" height="26" alt="image" src="https://github.com/user-attachments/assets/a6a043e6-5c2c-4098-aef1-e924fde45d56" />
 
 # Uso del RewriteCond
+
+Vamos a evitar que otros enlacen tus imágenes directamente
+
+
