@@ -22,3 +22,4 @@ Ahora vamos a crear un directorio, para ello creamos un directorio en "/var/www/
 Insertamos las siguientes lineas
 
 
+<img width="711" height="200" alt="image" src="https://github.com/user-attachments/assets/f8f0b23b-5385-4c7f-84c5-bb3e1651583a" />
