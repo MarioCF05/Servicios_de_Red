@@ -17,9 +17,10 @@ Creamos un archivo en la misma carpeta de los usuarios llamada ".htgroups" y añ
 # Crear un directorio y permitir acceso a todos los usuarios
 
 Ahora vamos a crear un directorio, para ello creamos un directorio en "/var/www/html/" y para darle acceso a todos los usuarios creamos un archivo ".htaccess"
+<img width="868" height="77" alt="image" src="https://github.com/user-attachments/assets/2218b619-0903-4b4e-9a24-98c5b744f9dd" />
 
 
 Insertamos las siguientes lineas
 
 
-<img width="711" height="200" alt="image" src="https://github.com/user-attachments/assets/f8f0b23b-5385-4c7f-84c5-bb3e1651583a" />
+<img width="642" height="139" alt="image" src="https://github.com/user-attachments/assets/02c4dceb-5910-41bb-85fc-23fbe1d94736" />
