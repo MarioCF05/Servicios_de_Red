@@ -40,7 +40,7 @@ En nuestra instancia instalamos "certbot"
 
 <img width="904" height="108" alt="image" src="https://github.com/user-attachments/assets/74c73482-fda1-47e5-a71d-dc8c330c3c80" />
 
-Hacemos que certbot detecte Apache automáticamente y configurare HTTPS
+Hacemos que certbot detecte Apache automáticamente y configurare HTTPS y ya lo tendriamos
 <img width="790" height="420" alt="image" src="https://github.com/user-attachments/assets/faf6bc6d-9387-4081-9ce7-a40cd57055a4" />
 
 
