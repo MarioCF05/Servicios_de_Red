@@ -4,28 +4,28 @@
 
 <br>
 
-[Activity 1](Actividades/Activity#1.md)
+[Activity 1](Actividades/Activity1.md)
 
 <br>
 
-[Activity 2](Actividades/Activity#2.md)
+[Activity 2](Actividades/Activity2.md)
 
 <br>
 
-[Activity 5](Actividades/Activity#5.md)
+[Activity 5](Actividades/Activity5.md)
 
 <br>
 
-[Activity 7](Actividades/Activity#7.md)
+[Activity 7](Actividades/Activity7.md)
 
 <br>
 
-[Activity 8](Actividades/Activity#8.md)
+[Activity 8](Actividades/Activity8.md)
 
 <br>
 
-[Activity 9](Actividades/Activity#9.md)
+[Activity 9](Actividades/Activity9.md)
 
 <br>
 
-[Activity 10](Actividades/Activity#10.md)
+[Activity 10](Actividades/Activity10.md)
