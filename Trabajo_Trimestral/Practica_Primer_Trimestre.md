@@ -183,6 +183,14 @@ sudo chown -R www-data:www-data /var/www/centro
 ```
 <img width="459" height="117" alt="image" src="https://github.com/user-attachments/assets/a516017b-7292-45d6-8a81-dfbc8b56f46e" />
 
+Nos metemos al WordPress y hacemos las conf basicas
+
+<img width="1029" height="319" alt="image" src="https://github.com/user-attachments/assets/22d896a4-3444-4e5c-9a7d-9f749381cd05" />
+
+<img width="1194" height="668" alt="image" src="https://github.com/user-attachments/assets/0f756296-b992-486a-87d3-c502433e22c9" />
+
+
+
 ## 8. Activacion del modulo WSGI para Python
 Instalamos modulo WSGI para Apache (esto lo tuve que hacer con anterioridad cuando puse el departamentos.centro.intranet.conf)
 ```bash
@@ -304,4 +312,8 @@ Instalamos
 apt install phpmyadmin -y
 ```
 <img width="1164" height="701" alt="image" src="https://github.com/user-attachments/assets/12f77a3d-d965-4506-a689-a515132f47ad" />
+
+Vemos PHPMyAdmin
+
+<img width="698" height="511" alt="image" src="https://github.com/user-attachments/assets/32dfb145-6124-436f-ad09-605aa03cae0b" />
 
