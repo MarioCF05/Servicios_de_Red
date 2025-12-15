@@ -187,7 +187,8 @@ Nos metemos al WordPress y hacemos las conf basicas
 
 <img width="1029" height="319" alt="image" src="https://github.com/user-attachments/assets/22d896a4-3444-4e5c-9a7d-9f749381cd05" />
 
-<img width="1194" height="668" alt="image" src="https://github.com/user-attachments/assets/0f756296-b992-486a-87d3-c502433e22c9" />
+<img width="1194" height="668" alt="image" src="https://github.com/user-attachments/assets/16053a08-908f-45bb-9a0d-993257fa7fc2" />
+
 
 
 
