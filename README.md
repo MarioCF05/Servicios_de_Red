@@ -33,3 +33,7 @@
 <br>
 
 [Trabajo Trimestral](Trabajo_Trimestral/Practica_Primer_Trimestre.md)
+
+<br>
+
+[S5. Instalación Wordpress en AWS](ActividadesAWS/Wordpress_en_Instancia_EC2.md)
