@@ -206,4 +206,7 @@ Nos vamos a la carpeta de wordpress (/var/www/wordpress) y hacemos una backup de
 Creamos un punto de mount vacio "mkdir wp-content"
 <img width="451" height="36" alt="image" src="https://github.com/user-attachments/assets/489c1085-bada-4ea2-91f1-11c0dee1cde7" />
 
-Y montamos el EFS como con anterioridad pero en wp-content
+Y montamos el EFS como con anterioridad pero en wp-content "sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport fs-0da0fa356a6f77894.efs.us-east-1.amazonaws.com:/ /var/www/html/wordpress/wp-content" IMPORTANTE DESMONTAR CON ANTERIORIDAD /home/admin/efs
+
+<img width="1568" height="331" alt="image" src="https://github.com/user-attachments/assets/5fb5d480-4fba-4c8e-83eb-066553d9b507" />
+
