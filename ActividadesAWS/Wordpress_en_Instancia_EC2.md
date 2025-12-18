@@ -141,3 +141,12 @@ Le damos un nombre y le asignamos nuestro VPC y pulsamos sobre "Crear un sistema
 
 Nos volvmeos a la instancia EC2 para habilitar un nuevo puerto (para permitir acceso de la instancia EFS)
 <img width="1058" height="458" alt="image" src="https://github.com/user-attachments/assets/05218c30-a4e0-45b5-8d32-57ff4170a972" />
+
+Volvemos al EFS y entramos en el que acabamos de crear y pulsamos "Asociar" y lo dejamos en "Montaje a traves de DNS" y seguimos las instrucciones
+
+<img width="1054" height="998" alt="image" src="https://github.com/user-attachments/assets/d93ec1fb-f6a6-4422-940a-04ec9eefd180" />
+
+Nos vamos al SSH con la instancia y creamos una carpeta y montamos el efs con el comando que nos sale en "Asociar"
+
+<img width="1100" height="557" alt="image" src="https://github.com/user-attachments/assets/ab61f9d6-b875-48da-b5b5-807d29af118f" />
+
