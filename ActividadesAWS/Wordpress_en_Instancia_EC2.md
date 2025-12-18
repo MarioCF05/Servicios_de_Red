@@ -150,3 +150,60 @@ Nos vamos al SSH con la instancia y creamos una carpeta y montamos el efs con el
 
 <img width="1100" height="557" alt="image" src="https://github.com/user-attachments/assets/ab61f9d6-b875-48da-b5b5-807d29af118f" />
 
+<img width="636" height="283" alt="image" src="https://github.com/user-attachments/assets/b304e162-4eb2-436e-9cec-6442c71cf36f" />
+
+# Descargar WordPress
+
+Dentro de nuestra carpeta de paginas de apache descargamos wordpress "wget http://wordpress.org/latest.tar.gz"
+ y lo descomprimimos con "tar -xf latest.tar.gz"
+
+<img width="930" height="311" alt="image" src="https://github.com/user-attachments/assets/3dd841c6-57fd-404f-bc72-c0f41e9d8686" />
+
+Descargamos el cliente de MySQL
+<img width="838" height="239" alt="image" src="https://github.com/user-attachments/assets/5364a682-9e82-4846-90f5-c81d293d7fde" />
+
+Conectamos el la base de datos con el cliente para ello he tenido que instalar el certificado raíz de Amazon RDS con el comando "wget https://truststore.pki.rds.amazonaws.com/global/global-bundle.pem -O rds-combined-ca-bundle.pem" y ya usamos el comando "mysql -u admin -h dbmysqlmario.ceklv5whsaaf.us-east-1.rds.amazonaws.com --ssl-ca=rds-combined-ca-bundle.pem -p" y ponemos la contraseña
+
+<img width="940" height="309" alt="image" src="https://github.com/user-attachments/assets/b16beaab-37ee-4a78-aa8f-2d797728c777" />
+
+Creamos la base de datos, el suuario y la contraseña "CREATE DATABASE wordpress_mario; CREATE USER 'wordpress_usuario'@'%' IDENTIFIED BY 'mario2005'; GRANT ALL PRIVILEGES ON wordpress_mario.* TO 'wordpress_usuario'@'%'; FLUSH PRIVILEGES;
+"
+<img width="1542" height="175" alt="image" src="https://github.com/user-attachments/assets/b0cd4cab-57c1-418a-ac3e-18b55d5c9f69" />
+
+Nos metemos al navegador y buscamos nuestro wordpress
+
+<img width="958" height="629" alt="image" src="https://github.com/user-attachments/assets/a13e66cb-6f37-46db-b1dc-46cd2dec8e7b" />
+
+Rellenamos los campos con los datos de nuestra Base de datos
+
+<img width="953" height="742" alt="image" src="https://github.com/user-attachments/assets/66c5cfe6-9e7a-4681-a7d5-9480fba702c3" />
+
+Creamos el archivo wp-config.php y pulsamos sobre "Run the installation"
+
+<img width="957" height="486" alt="image" src="https://github.com/user-attachments/assets/37fd4a88-6ae3-4b69-ab28-2b367f27024d" />
+
+<img width="942" height="813" alt="image" src="https://github.com/user-attachments/assets/b007edbf-b715-4421-9f14-b84689174bec" />
+
+Ahora le damos un nombre al sitio, un usuario (con sus credenciales) y pulsamos "Install WordPress"
+<img width="829" height="895" alt="image" src="https://github.com/user-attachments/assets/0fcb49fb-5c38-41bf-9a89-c28daf85ddd1" />
+
+Y ya tendriamos creado el wordpress
+
+<img width="859" height="456" alt="image" src="https://github.com/user-attachments/assets/86910728-1b59-4a87-a8d7-9717b3f54448" />
+
+Prueba de login y vista de wordpress
+
+<img width="917" height="486" alt="image" src="https://github.com/user-attachments/assets/4de648f3-046b-40eb-84ee-83ea9b2c7efc" />
+
+<img width="1919" height="1044" alt="image" src="https://github.com/user-attachments/assets/c9629656-9f56-44b4-8765-87ef7c7b7fb9" />
+
+# Conexion de EFS con WP-Content
+
+Nos vamos a la carpeta de wordpress (/var/www/wordpress) y hacemos una backup de lo que ya tenemos "mv wp-content wp-content-backup"
+
+<img width="623" height="19" alt="image" src="https://github.com/user-attachments/assets/2b4389ad-621a-40ea-9b20-7f0363680071" />
+
+Creamos un punto de mount vacio "mkdir wp-content"
+<img width="451" height="36" alt="image" src="https://github.com/user-attachments/assets/489c1085-bada-4ea2-91f1-11c0dee1cde7" />
+
+Y montamos el EFS como con anterioridad pero en wp-content
