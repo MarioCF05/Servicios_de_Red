@@ -801,11 +801,6 @@ networks:
         - subnet: 172.20.0.0/16
 ```
 
-> 📸 **CAPTURA 31:** `docker-compose ps` o `docker ps` — Contenedores en ejecución
->
-> *(Insertar aquí captura de pantalla)*
-
----
 
 ## 9. Conclusiones
 
@@ -820,10 +815,6 @@ En esta práctica se ha conseguido:
    - Subdominio propio con resolución DNS directa e inversa
    - Acceso FTP con TLS, SSH y SFTP
    - Capacidad de ejecutar aplicaciones Python
-
-> 📸 **CAPTURA 32:** Esquema final del despliegue — Todo funcionando
->
-> *(Insertar aquí captura de pantalla final)*
 
 ---
 
