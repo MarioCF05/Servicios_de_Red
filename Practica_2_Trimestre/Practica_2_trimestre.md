@@ -694,9 +694,7 @@ ssh cliente1@192.168.8.167
 
 #### phpMyAdmin
 
-> 📸 **CAPTURA 29:** phpMyAdmin mostrando la base de datos `bd_cliente1`
->
-> *(Insertar aquí captura de pantalla del navegador)*
+<img width="1817" height="1018" alt="Screenshot 2026-05-19 111317" src="https://github.com/user-attachments/assets/8fd726fb-5d17-4396-a26a-f570c021a42e" />
 
 ### 7.3. Resumen de comprobaciones
 
@@ -714,11 +712,17 @@ ssh cliente1@192.168.8.167
 | PHP | curl al `info.php` | `phpinfo()` |
 | Python | curl al `app.wsgi` | `"Python WSGI funcionando"` |
 
-> 📸 **CAPTURA 30:** `sudo systemctl status apache2 mariadb proftpd named ssh` — Todos los servicios activos
->
-> *(Insertar aquí captura de pantalla con el estado de todos los servicios)*
-
+<img width="1187" height="689" alt="Screenshot 2026-05-19 111432" src="https://github.com/user-attachments/assets/a60f15f1-e0b4-4370-a185-d802f61d27bc" />
 ---
+
+<img width="1291" height="497" alt="Screenshot 2026-05-19 111516" src="https://github.com/user-attachments/assets/f45f7721-7279-4b85-9362-e9cc5ce32b5e" />
+
+<img width="1098" height="367" alt="Screenshot 2026-05-19 111544" src="https://github.com/user-attachments/assets/66cc1f54-d8c5-4374-89c0-43f35dac475b" />
+
+<img width="918" height="283" alt="Screenshot 2026-05-19 111606" src="https://github.com/user-attachments/assets/31c1149d-1464-4cb0-8b91-0a2b70611d6a" />
+
+
+<img width="959" height="277" alt="Screenshot 2026-05-19 111627" src="https://github.com/user-attachments/assets/9f1c511a-9d2a-4f58-a4f8-f497260203f6" />
 
 ## 8. Docker (Opcional)
 
