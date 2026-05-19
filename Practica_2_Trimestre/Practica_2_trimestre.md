@@ -374,9 +374,7 @@ sudo systemctl reload apache2
 
 **Acceso:** `http://192.168.8.167/phpmyadmin`
 
-> 📸 **CAPTURA 14:** Panel de phpMyAdmin mostrando la base de datos `bd_cliente1`
->
-> *(Insertar aquí captura de pantalla)*
+<img width="1691" height="885" alt="Screenshot 2026-05-19 101033" src="https://github.com/user-attachments/assets/70ace223-ba3a-4cb5-bf9c-1a4cb976cfb1" />
 
 ---
 
@@ -425,9 +423,8 @@ systemctl reload named 2>/dev/null || systemctl reload bind9 2>/dev/null
 echo "[DNS] Subdominio ${SUB_DOMAIN} creado correctamente"
 ```
 
-> 📸 **CAPTURA 15:** Contenido del script `crear_subdominio.sh` en el servidor
->
-> *(Insertar aquí captura de pantalla)*
+<img width="718" height="675" alt="Screenshot 2026-05-19 101225" src="https://github.com/user-attachments/assets/0261e3cf-4a7b-4aa1-9bb9-b1c6f157c4d0" />
+
 
 ### 6.2. crear_vhost.sh
 
@@ -502,9 +499,10 @@ systemctl reload apache2
 echo "[Apache] VirtualHost ${SUB_DOMAIN} creado y habilitado"
 ```
 
-> 📸 **CAPTURA 16:** Contenido del script `crear_vhost.sh` en el servidor
->
-> *(Insertar aquí captura de pantalla)*
+<img width="1200" height="1376" alt="Screenshot 2026-05-19 101357" src="https://github.com/user-attachments/assets/a6ff236d-e684-45cf-9c05-04e0959cdf38" />
+
+
+<img width="888" height="142" alt="Screenshot 2026-05-19 101404" src="https://github.com/user-attachments/assets/ac7f767d-5951-44de-be86-f184d203759a" />
 
 ### 6.3. crear_usuario.sh (Script Maestro)
 
@@ -593,9 +591,10 @@ echo "Python WSGI: http://${SUB_DOMAIN}/app.wsgi"
 echo "phpMyAdmin: http://192.168.8.167/phpmyadmin"
 ```
 
-> 📸 **CAPTURA 17:** Contenido del script `crear_usuario.sh` en el servidor
->
-> *(Insertar aquí captura de pantalla)*
+<img width="855" height="1397" alt="Screenshot 2026-05-19 101637" src="https://github.com/user-attachments/assets/b19a8971-8e37-4d40-b1a8-6e37f098f8dd" />
+
+<img width="827" height="454" alt="Screenshot 2026-05-19 101701" src="https://github.com/user-attachments/assets/7570dff3-b617-417e-a0fb-3da3cc10c225" />
+
 
 ---
 
@@ -609,9 +608,7 @@ Ejecución del script maestro para crear el cliente `cliente1`:
 sudo /usr/local/bin/crear_usuario.sh cliente1 192.168.8.167
 ```
 
-> 📸 **CAPTURA 18:** Ejecución del script `crear_usuario.sh` — Salida completa mostrando los 6 pasos
->
-> *(Insertar aquí captura de pantalla)*
+<img width="853" height="916" alt="Screenshot 2026-05-19 102310" src="https://github.com/user-attachments/assets/590b44b3-975d-4a9f-9947-75d75232d89f" />
 
 ### 7.2. Verificación de resultados
 
@@ -621,9 +618,7 @@ sudo /usr/local/bin/crear_usuario.sh cliente1 192.168.8.167
 id cliente1
 ```
 
-> 📸 **CAPTURA 19:** `id cliente1` — Verificar que el usuario existe
->
-> *(Insertar aquí captura de pantalla)*
+<img width="558" height="137" alt="Screenshot 2026-05-19 102341" src="https://github.com/user-attachments/assets/a4f15349-180e-4724-9faa-aab6a77ca3e7" />
 
 #### Directorio web
 
@@ -631,9 +626,7 @@ id cliente1
 ls -la /var/www/html/cliente1/
 ```
 
-> 📸 **CAPTURA 20:** `ls -la /var/www/html/cliente1/` — Archivos del cliente
->
-> *(Insertar aquí captura de pantalla)*
+<img width="559" height="425" alt="Screenshot 2026-05-19 102412" src="https://github.com/user-attachments/assets/395a38af-9f7b-4c68-bc37-1bca49128d90" />
 
 #### VirtualHost de Apache
 
@@ -641,9 +634,7 @@ ls -la /var/www/html/cliente1/
 sudo apache2ctl -S | grep cliente1
 ```
 
-> 📸 **CAPTURA 21:** `sudo apache2ctl -S` — VirtualHost activo para cliente1
->
-> *(Insertar aquí captura de pantalla)*
+<img width="1005" height="521" alt="Screenshot 2026-05-19 102436" src="https://github.com/user-attachments/assets/e6e07d34-eb10-4a03-9373-4b267441c07c" />
 
 #### Registro DNS
 
@@ -651,9 +642,7 @@ sudo apache2ctl -S | grep cliente1
 grep cliente1 /etc/bind/zones/db.marisma.local
 ```
 
-> 📸 **CAPTURA 22:** Registro DNS del subdominio cliente1.marisma.local
->
-> *(Insertar aquí captura de pantalla)*
+<img width="678" height="362" alt="Screenshot 2026-05-19 102641" src="https://github.com/user-attachments/assets/68344762-47b1-4c9f-8734-0f024e6d6a61" />
 
 #### Base de datos MySQL
 
@@ -662,9 +651,7 @@ sudo mysql -e "SHOW DATABASES LIKE '%cliente1%';"
 sudo mysql -e "SHOW GRANTS FOR 'user_cliente1'@'localhost';"
 ```
 
-> 📸 **CAPTURA 23:** Base de datos `bd_cliente1` y privilegios del usuario
->
-> *(Insertar aquí captura de pantalla)*
+<img width="1106" height="274" alt="Screenshot 2026-05-19 102821" src="https://github.com/user-attachments/assets/03a67e81-63d1-44ae-bea0-d7a6151fb272" />
 
 #### Acceso web
 
@@ -672,9 +659,7 @@ sudo mysql -e "SHOW GRANTS FOR 'user_cliente1'@'localhost';"
 curl -s -H "Host: cliente1.marisma.local" http://192.168.8.167/
 ```
 
-> 📸 **CAPTURA 24:** Página web del cliente accediendo por HTTP
->
-> *(Insertar aquí captura de pantalla del navegador mostrando la página)*
+<img width="934" height="331" alt="Screenshot 2026-05-19 103702" src="https://github.com/user-attachments/assets/99baf267-bf06-4c2b-a069-3aa4de2ae0ea" />
 
 #### PHP funcionando
 
@@ -682,9 +667,7 @@ curl -s -H "Host: cliente1.marisma.local" http://192.168.8.167/
 curl -s -H "Host: cliente1.marisma.local" http://192.168.8.167/info.php | head -20
 ```
 
-> 📸 **CAPTURA 25:** Página `info.php` mostrando que PHP funciona correctamente
->
-> *(Insertar aquí captura de pantalla)*
+<img width="1717" height="1439" alt="Screenshot 2026-05-19 103933" src="https://github.com/user-attachments/assets/6d89d689-c58d-43e5-a1d4-1a95b32b005d" />
 
 #### Python WSGI
 
@@ -692,15 +675,14 @@ curl -s -H "Host: cliente1.marisma.local" http://192.168.8.167/info.php | head -
 curl -s -H "Host: cliente1.marisma.local" http://192.168.8.167/app.wsgi
 ```
 
-> 📸 **CAPTURA 26:** Aplicación Python WSGI funcionando
->
-> *(Insertar aquí captura de pantalla)*
+<img width="1716" height="493" alt="Screenshot 2026-05-19 104352" src="https://github.com/user-attachments/assets/9e3092c6-c000-4e40-b55c-98876e82ba6d" />
 
 #### Acceso FTP con TLS
 
-> 📸 **CAPTURA 27:** Cliente FTP (FileZilla) conectado mediante SFTP o FTP con TLS a `192.168.8.167` con usuario `cliente1`
->
-> *(Insertar aquí captura de pantalla de FileZilla mostrando archivos)*
+<img width="1181" height="942" alt="Screenshot 2026-05-19 105211" src="https://github.com/user-attachments/assets/b30a2100-54fc-46d3-b9ca-2dcbf3b5e345" />
+
+<img width="1180" height="936" alt="Screenshot 2026-05-19 105316" src="https://github.com/user-attachments/assets/f49e665d-d528-45cb-9c36-7365e6311341" />
+
 
 #### Acceso SSH
 
@@ -708,9 +690,7 @@ curl -s -H "Host: cliente1.marisma.local" http://192.168.8.167/app.wsgi
 ssh cliente1@192.168.8.167
 ```
 
-> 📸 **CAPTURA 28:** Conexión SSH exitosa con el usuario `cliente1`
->
-> *(Insertar aquí captura de pantalla)*
+<img width="1088" height="580" alt="Screenshot 2026-05-19 105526" src="https://github.com/user-attachments/assets/6c88a5e8-57ad-44db-99b8-27e38fad8c87" />
 
 #### phpMyAdmin
 
