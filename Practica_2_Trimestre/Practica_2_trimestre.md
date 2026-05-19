@@ -312,9 +312,7 @@ sudo systemctl restart named
 
 <img width="829" height="80" alt="Screenshot 2026-05-19 094617" src="https://github.com/user-attachments/assets/906ece5a-9c1f-4943-9284-47f879227228" />
 
-> 📸 **CAPTURA 11:** `nslookup cliente1.marisma.local` desde el cliente — Resolución de nombre funcionando
->
-> *(Insertar aquí captura de pantalla)*
+<img width="519" height="146" alt="Screenshot 2026-05-19 095521" src="https://github.com/user-attachments/assets/c2c75f8c-94d4-42be-b4fe-4fb8a0f62dc9" />
 
 ### 5.3. ProFTPD con TLS
 
@@ -347,9 +345,7 @@ Incluir en `/etc/proftpd/proftpd.conf`:
 Include /etc/proftpd/tls.conf
 ```
 
-> 📸 **CAPTURA 12:** Cliente FTP (FileZilla) conectando con TLS explícito a `192.168.8.167`
->
-> *(Insertar aquí captura de pantalla de FileZilla conectado)*
+<img width="1717" height="1016" alt="Screenshot 2026-05-19 100221" src="https://github.com/user-attachments/assets/d483792f-edf6-4911-a973-bb92d0fdfa17" />
 
 ### 5.4. MariaDB
 
@@ -365,9 +361,8 @@ sudo mysql_secure_installation
 SHOW DATABASES;
 ```
 
-> 📸 **CAPTURA 13:** `sudo mysql -e "SHOW DATABASES;"` — Listado de bases de datos incluyendo `bd_cliente1`
->
-> *(Insertar aquí captura de pantalla)*
+<img width="526" height="237" alt="Screenshot 2026-05-19 100317" src="https://github.com/user-attachments/assets/dc7fb8bd-454a-44ff-b68f-0f0d068f8682" />
+
 
 ### 5.5. phpMyAdmin
 
