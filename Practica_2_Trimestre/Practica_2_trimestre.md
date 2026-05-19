@@ -726,7 +726,7 @@ ssh cliente1@192.168.8.167
 
 ## 8. Docker (Opcional)
 
-*Este apartado puede suponer hasta el 10% adicional de la nota.*
+
 
 ### Estructura propuesta
 
