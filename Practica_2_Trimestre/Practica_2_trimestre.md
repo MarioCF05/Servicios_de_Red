@@ -160,9 +160,7 @@ sudo a2enconf phpmyadmin
 sudo systemctl reload apache2
 ```
 
-> 📸 **CAPTURA 4:** Acceso a `http://192.168.8.167/phpmyadmin` desde el navegador
->
-> *(Insertar aquí captura de pantalla del login de phpMyAdmin)*
+<img width="1718" height="1019" alt="Screenshot 2026-05-19 093727" src="https://github.com/user-attachments/assets/582b103a-0132-48fa-b1af-450b55465c6b" />
 
 ### 4.4. ProFTPD + TLS
 
@@ -170,9 +168,7 @@ sudo systemctl reload apache2
 sudo apt install -y proftpd
 ```
 
-> 📸 **CAPTURA 5:** `sudo systemctl status proftpd` — Servicio ProFTPD activo
->
-> *(Insertar aquí captura de pantalla)*
+<img width="1104" height="363" alt="Screenshot 2026-05-19 093807" src="https://github.com/user-attachments/assets/8e5c6f5b-ab4b-43bb-9d97-ddea304e8570" />
 
 ### 4.5. Bind9 (DNS)
 
@@ -180,9 +176,7 @@ sudo apt install -y proftpd
 sudo apt install -y bind9
 ```
 
-> 📸 **CAPTURA 6:** `sudo systemctl status named` — Servicio Bind9 activo
->
-> *(Insertar aquí captura de pantalla)*
+<img width="1324" height="497" alt="Screenshot 2026-05-19 093838" src="https://github.com/user-attachments/assets/a2c398a3-5126-4535-8448-c9137d3a884e" />
 
 ### 4.6. OpenSSH Server
 
@@ -192,9 +186,7 @@ sudo apt install -y openssh-server
 sudo systemctl enable --now ssh
 ```
 
-> 📸 **CAPTURA 7:** `sudo systemctl status ssh` — Servicio SSH activo
->
-> *(Insertar aquí captura de pantalla)*
+<img width="1129" height="495" alt="Screenshot 2026-05-19 093911" src="https://github.com/user-attachments/assets/bca46682-74ca-4095-bff1-aadd24b5bbc9" />
 
 ### 4.7. Python WSGI
 
@@ -202,12 +194,11 @@ sudo systemctl enable --now ssh
 sudo apt install -y python3 libapache2-mod-wsgi-py3
 ```
 
-> 📸 **CAPTURA 8:** Verificación de módulos Apache activos
->
+
 > ```bash
-> sudo apache2ctl -M | grep -E "wsgi|rewrite|ssl"
+> sudo apache2ctl -M 2>&1 | grep -E "(wsgi|rewrite|ssl)""
 > ```
-> *(Insertar aquí captura de pantalla)*
+<img width="718" height="102" alt="Screenshot 2026-05-19 094137" src="https://github.com/user-attachments/assets/03958671-40c7-4ca4-9f85-ceab5ae5b4cc" />
 
 ---
 
@@ -253,9 +244,7 @@ Archivo de configuración: `/etc/apache2/sites-available/<usuario>.marisma.conf`
 </VirtualHost>
 ```
 
-> 📸 **CAPTURA 9:** `sudo apache2ctl -S` — Listado de VirtualHosts configurados
->
-> *(Insertar aquí captura de pantalla)*
+<img width="982" height="440" alt="Screenshot 2026-05-19 094539" src="https://github.com/user-attachments/assets/02e8f85f-bca2-4fe8-be38-a1a85035ed63" />
 
 ### 5.2. DNS (Bind9)
 
@@ -321,9 +310,7 @@ sudo named-checkzone marisma.local /etc/bind/zones/db.marisma.local
 sudo systemctl restart named
 ```
 
-> 📸 **CAPTURA 10:** `sudo named-checkzone marisma.local /etc/bind/zones/db.marisma.local` — Verificación de zona DNS
->
-> *(Insertar aquí captura de pantalla)*
+<img width="829" height="80" alt="Screenshot 2026-05-19 094617" src="https://github.com/user-attachments/assets/906ece5a-9c1f-4943-9284-47f879227228" />
 
 > 📸 **CAPTURA 11:** `nslookup cliente1.marisma.local` desde el cliente — Resolución de nombre funcionando
 >
