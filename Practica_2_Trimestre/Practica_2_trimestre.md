@@ -806,10 +806,10 @@ networks:
 
 En esta práctica se ha conseguido:
 
-1. ✅ **Instalar y configurar** un servidor Ubuntu con todos los servicios necesarios para alojamiento web.
-2. ✅ **Automatizar** el proceso de alta de clientes mediante 3 scripts que crean el usuario, el VirtualHost de Apache, el subdominio DNS y la base de datos MySQL en **6 pasos**.
-3. ✅ **Asegurar** las comunicaciones FTP mediante cifrado TLS.
-4. ✅ **Proporcionar** a cada cliente:
+1.  **Instalar y configurar** un servidor Ubuntu con todos los servicios necesarios para alojamiento web.
+2.  **Automatizar** el proceso de alta de clientes mediante 3 scripts que crean el usuario, el VirtualHost de Apache, el subdominio DNS y la base de datos MySQL en **6 pasos**.
+3.  **Asegurar** las comunicaciones FTP mediante cifrado TLS.
+4.  **Proporcionar** a cada cliente:
    - Alojamiento de páginas web estáticas (HTML) y dinámicas (PHP)
    - Base de datos MySQL con phpMyAdmin
    - Subdominio propio con resolución DNS directa e inversa
