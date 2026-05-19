@@ -83,9 +83,7 @@ El objetivo de esta práctica es la instalación, configuración y puesta en mar
 
 ### Comprobación inicial del sistema
 
-> 📸 **CAPTURA 1:** `lsb_release -a` — Mostrar versión de Ubuntu e IP del servidor
-> 
-> *(Insertar aquí captura de pantalla mostrando `hostnamectl` y `ip a`)*
+<img width="927" height="727" alt="Screenshot 2026-05-19 093506" src="https://github.com/user-attachments/assets/e26f9617-9c8e-49c0-82ba-ff3fe00efd74" />
 
 ---
 
@@ -142,9 +140,8 @@ sudo apt install -y apache2 php libapache2-mod-php
 sudo systemctl status apache2
 ```
 
-> 📸 **CAPTURA 2:** `sudo systemctl status apache2` — Servicio Apache activo
->
-> *(Insertar aquí captura de pantalla)*
+<img width="887" height="469" alt="Screenshot 2026-05-19 093314" src="https://github.com/user-attachments/assets/eb0c671c-c0b8-4ffb-b963-bda8334e8d95" />
+
 
 ### 4.2. MariaDB
 
@@ -153,9 +150,7 @@ sudo apt install -y mariadb-server
 sudo systemctl enable --now mariadb
 ```
 
-> 📸 **CAPTURA 3:** `sudo systemctl status mariadb` — Servicio MariaDB activo
->
-> *(Insertar aquí captura de pantalla)*
+<img width="1702" height="499" alt="Screenshot 2026-05-19 093600" src="https://github.com/user-attachments/assets/066c7004-62d7-469a-872f-ce48e8c7758c" />
 
 ### 4.3. phpMyAdmin
 
