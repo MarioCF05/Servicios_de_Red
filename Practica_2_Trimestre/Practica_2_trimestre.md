@@ -1,0 +1,883 @@
+# Práctica 2º Trimestre - Servidor de Alojamiento Web
+
+**ASIR - Administración de Sistemas Informáticos en Red**
+**Curso 2025/2026**
+
+---
+
+## Índice
+
+1. [Introducción y Objetivos](#1-introducción-y-objetivos)
+2. [Requisitos del Sistema](#2-requisitos-del-sistema)
+3. [Arquitectura de la Solución](#3-arquitectura-de-la-solución)
+4. [Instalación de Servicios](#4-instalación-de-servicios)
+   - [4.1. Apache2 + PHP](#41-apache2--php)
+   - [4.2. MariaDB](#42-mariadb)
+   - [4.3. phpMyAdmin](#43-phpmyadmin)
+   - [4.4. ProFTPD + TLS](#44-proftpd--tls)
+   - [4.5. Bind9 (DNS)](#45-bind9-dns)
+   - [4.6. OpenSSH Server](#46-openssh-server)
+   - [4.7. Python WSGI](#47-python-wsgi)
+5. [Configuración de Servicios](#5-configuración-de-servicios)
+   - [5.1. Apache](#51-apache)
+   - [5.2. DNS (Bind9)](#52-dns-bind9)
+   - [5.3. ProFTPD con TLS](#53-proftpd-con-tls)
+   - [5.4. MariaDB](#54-mariadb)
+   - [5.5. phpMyAdmin](#55-phpmyadmin)
+6. [Scripts de Automatización](#6-scripts-de-automatización)
+   - [6.1. crear_subdominio.sh](#61-crear_subdominiosh)
+   - [6.2. crear_vhost.sh](#62-crear_vhostsh)
+   - [6.3. crear_usuario.sh (Script Maestro)](#63-crear_usuariosh-script-maestro)
+7. [Prueba de Funcionamiento](#7-prueba-de-funcionamiento)
+8. [Docker (Opcional)](#8-docker-opcional)
+9. [Conclusiones](#9-conclusiones)
+10. [Referencias](#10-referencias)
+
+---
+
+## 1. Introducción y Objetivos
+
+El objetivo de esta práctica es la instalación, configuración y puesta en marcha de un **servidor de alojamiento web** que permita dar servicio a múltiples clientes de forma automatizada.
+
+### Servicios que ofrece el servidor
+
+| Servicio | Descripción |
+|----------|-------------|
+| **Web** | Alojamiento de páginas estáticas y dinámicas con PHP |
+| **Base de datos** | MySQL/MariaDB administrable con phpMyAdmin |
+| **FTP** | Acceso con cifrado TLS para transferencia de archivos |
+| **DNS** | Resolución de nombres con subdominios por cliente |
+| **SSH/SFTP** | Acceso remoto seguro y transferencia de archivos |
+| **Python** | Ejecución de aplicaciones Python mediante WSGI |
+
+### Datos del servidor
+
+| Parámetro | Valor |
+|-----------|-------|
+| **IP del servidor** | `192.168.8.167` |
+| **Dominio principal** | `marisma.local` |
+| **Sistema Operativo** | Ubuntu Server 26.04 LTS |
+| **Usuario administrador** | `mario` |
+
+---
+
+## 2. Requisitos del Sistema
+
+### Hardware
+- Ubuntu Server 26.04 LTS
+- Conexión a red con IP estática
+- Usuario con privilegios `sudo`
+
+### Paquetes necesarios
+
+| Servicio | Paquete |
+|----------|---------|
+| Servidor Web | `apache2` |
+| PHP | `php libapache2-mod-php` |
+| Base de Datos | `mariadb-server` |
+| Administración BD | `phpmyadmin php-mbstring php-zip php-gd php-json php-curl` |
+| FTP | `proftpd` |
+| DNS | `bind9` |
+| SSH | `openssh-server` |
+| Python | `python3 libapache2-mod-wsgi-py3` |
+
+### Comprobación inicial del sistema
+
+> 📸 **CAPTURA 1:** `lsb_release -a` — Mostrar versión de Ubuntu e IP del servidor
+> 
+> *(Insertar aquí captura de pantalla mostrando `hostnamectl` y `ip a`)*
+
+---
+
+## 3. Arquitectura de la Solución
+
+```
+                    +-------------------+
+                    |   Servidor DNS    |
+                    |   (Bind9)         |
+                    |  marisma.local    |
+                    +--------+----------+
+                             |
+                    +--------+----------+
+                    |   Servidor Web    |
+                    |   (Apache 2)      |
+                    +--------+----------+
+                   /         |           \
+                  /          |            \
+     +-----------+  +-----------+  +-----------+
+     | Cliente 1  |  | Cliente 2  |  | Cliente N  |
+     | cliente1   |  | cliente2   |  | clienteN   |
+     | FTP/SSH    |  | FTP/SSH    |  | FTP/SSH    |
+     | PHP/MySQL  |  | PHP/MySQL  |  | PHP/MySQL  |
+     +-----------+  +-----------+  +-----------+
+```
+
+### Estructura de cada cliente
+
+```
+/var/www/html/<usuario>/
+├── index.html       # Página principal
+├── info.php         # Información de PHP
+└── app.wsgi         # Aplicación Python WSGI
+
+Base de datos: bd_<usuario>
+Usuario DB:    user_<usuario>
+Subdominio:    <usuario>.marisma.local
+```
+
+---
+
+## 4. Instalación de Servicios
+
+### 4.1. Apache2 + PHP
+
+```bash
+# Actualizar repositorios
+sudo apt update && sudo apt upgrade -y
+
+# Instalar Apache2 y PHP
+sudo apt install -y apache2 php libapache2-mod-php
+
+# Verificar estado
+sudo systemctl status apache2
+```
+
+> 📸 **CAPTURA 2:** `sudo systemctl status apache2` — Servicio Apache activo
+>
+> *(Insertar aquí captura de pantalla)*
+
+### 4.2. MariaDB
+
+```bash
+sudo apt install -y mariadb-server
+sudo systemctl enable --now mariadb
+```
+
+> 📸 **CAPTURA 3:** `sudo systemctl status mariadb` — Servicio MariaDB activo
+>
+> *(Insertar aquí captura de pantalla)*
+
+### 4.3. phpMyAdmin
+
+```bash
+sudo apt install -y phpmyadmin php-mbstring php-zip php-gd php-json php-curl
+sudo a2enconf phpmyadmin
+sudo systemctl reload apache2
+```
+
+> 📸 **CAPTURA 4:** Acceso a `http://192.168.8.167/phpmyadmin` desde el navegador
+>
+> *(Insertar aquí captura de pantalla del login de phpMyAdmin)*
+
+### 4.4. ProFTPD + TLS
+
+```bash
+sudo apt install -y proftpd
+```
+
+> 📸 **CAPTURA 5:** `sudo systemctl status proftpd` — Servicio ProFTPD activo
+>
+> *(Insertar aquí captura de pantalla)*
+
+### 4.5. Bind9 (DNS)
+
+```bash
+sudo apt install -y bind9
+```
+
+> 📸 **CAPTURA 6:** `sudo systemctl status named` — Servicio Bind9 activo
+>
+> *(Insertar aquí captura de pantalla)*
+
+### 4.6. OpenSSH Server
+
+```bash
+# Normalmente viene preinstalado, si no:
+sudo apt install -y openssh-server
+sudo systemctl enable --now ssh
+```
+
+> 📸 **CAPTURA 7:** `sudo systemctl status ssh` — Servicio SSH activo
+>
+> *(Insertar aquí captura de pantalla)*
+
+### 4.7. Python WSGI
+
+```bash
+sudo apt install -y python3 libapache2-mod-wsgi-py3
+```
+
+> 📸 **CAPTURA 8:** Verificación de módulos Apache activos
+>
+> ```bash
+> sudo apache2ctl -M | grep -E "wsgi|rewrite|ssl"
+> ```
+> *(Insertar aquí captura de pantalla)*
+
+---
+
+## 5. Configuración de Servicios
+
+### 5.1. Apache
+
+#### Configuración de ServerName
+
+```bash
+echo "ServerName marisma.local" | sudo tee /etc/apache2/conf-available/servername.conf
+sudo a2enconf servername
+```
+
+#### Habilitación de módulos
+
+```bash
+sudo a2enmod rewrite ssl wsgi
+sudo systemctl restart apache2
+```
+
+#### VirtualHost
+
+Archivo de configuración: `/etc/apache2/sites-available/<usuario>.marisma.conf`
+
+```apache
+<VirtualHost *:80>
+    ServerAdmin admin@<usuario>.marisma.local
+    ServerName www.<usuario>.marisma.local
+    ServerAlias <usuario>.marisma.local
+    DocumentRoot /var/www/html/<usuario>
+
+    <Directory /var/www/html/<usuario>>
+        DirectoryIndex index.html index.php
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride all
+        Require all granted
+    </Directory>
+
+    ErrorLog  /var/log/apache2/<usuario>.marisma.local.error.log
+    LogLevel error
+    CustomLog /var/log/apache2/<usuario>.marisma.local.access.log combined
+</VirtualHost>
+```
+
+> 📸 **CAPTURA 9:** `sudo apache2ctl -S` — Listado de VirtualHosts configurados
+>
+> *(Insertar aquí captura de pantalla)*
+
+### 5.2. DNS (Bind9)
+
+#### Archivo de configuración de zonas: `/etc/bind/named.conf.local`
+
+```bind
+zone "marisma.local" {
+    type master;
+    file "/etc/bind/zones/db.marisma.local";
+};
+
+zone "8.168.192.in-addr.arpa" {
+    type master;
+    file "/etc/bind/zones/db.8.168.192";
+};
+```
+
+#### Zona directa: `/etc/bind/zones/db.marisma.local`
+
+```bind
+$TTL    604800
+@       IN      SOA     ns1.marisma.local. admin.marisma.local. (
+                    2026051901
+                         604800
+                          86400
+                        2419200
+                         604800 )
+
+@       IN      NS      ns1.marisma.local.
+ns1     IN      A       192.168.8.167
+@       IN      A       192.168.8.167
+www     IN      A       192.168.8.167
+
+; cliente1
+$ORIGIN cliente1.marisma.local.
+@       IN      A       192.168.8.167
+www     IN      A       192.168.8.167
+```
+
+#### Zona inversa: `/etc/bind/zones/db.8.168.192`
+
+```bind
+$TTL    604800
+@       IN      SOA     marisma.local. admin.marisma.local. (
+                    2026051901
+                         604800
+                          86400
+                        2419200
+                         604800 )
+
+@       IN      NS      ns1.marisma.local.
+167     IN      PTR     ns1.marisma.local.
+167     IN      PTR     marisma.local.
+; cliente1
+167     IN      PTR     cliente1.marisma.local.
+```
+
+#### Verificación de la configuración DNS
+
+```bash
+sudo named-checkconf
+sudo named-checkzone marisma.local /etc/bind/zones/db.marisma.local
+sudo systemctl restart named
+```
+
+> 📸 **CAPTURA 10:** `sudo named-checkzone marisma.local /etc/bind/zones/db.marisma.local` — Verificación de zona DNS
+>
+> *(Insertar aquí captura de pantalla)*
+
+> 📸 **CAPTURA 11:** `nslookup cliente1.marisma.local` desde el cliente — Resolución de nombre funcionando
+>
+> *(Insertar aquí captura de pantalla)*
+
+### 5.3. ProFTPD con TLS
+
+#### Generación de certificado SSL
+
+```bash
+sudo mkdir -p /etc/proftpd/ssl
+sudo openssl req -x509 -nodes -days 3650 -newkey rsa:2048 \
+    -keyout /etc/proftpd/ssl/proftpd.key \
+    -out /etc/proftpd/ssl/proftpd.crt \
+    -subj "/C=ES/ST=Madrid/L=Madrid/O=ASIR/OU=Admin/CN=marisma.local"
+```
+
+#### Configuración TLS: `/etc/proftpd/tls.conf`
+
+```conf
+<IfModule mod_tls.c>
+    TLSEngine on
+    TLSLog /var/log/proftpd/tls.log
+    TLSProtocol TLSv1.2 TLSv1.3
+    TLSRSACertificateFile /etc/proftpd/ssl/proftpd.crt
+    TLSRSACertificateKeyFile /etc/proftpd/ssl/proftpd.key
+    TLSRequired on
+    TLSVerifyClient off
+</IfModule>
+```
+
+Incluir en `/etc/proftpd/proftpd.conf`:
+```conf
+Include /etc/proftpd/tls.conf
+```
+
+> 📸 **CAPTURA 12:** Cliente FTP (FileZilla) conectando con TLS explícito a `192.168.8.167`
+>
+> *(Insertar aquí captura de pantalla de FileZilla conectado)*
+
+### 5.4. MariaDB
+
+#### Configuración de seguridad (opcional en entorno de pruebas)
+
+```bash
+sudo mysql_secure_installation
+```
+
+#### Verificación de bases de datos
+
+```sql
+SHOW DATABASES;
+```
+
+> 📸 **CAPTURA 13:** `sudo mysql -e "SHOW DATABASES;"` — Listado de bases de datos incluyendo `bd_cliente1`
+>
+> *(Insertar aquí captura de pantalla)*
+
+### 5.5. phpMyAdmin
+
+Habilitar en Apache:
+```bash
+sudo a2enconf phpmyadmin
+sudo systemctl reload apache2
+```
+
+**Acceso:** `http://192.168.8.167/phpmyadmin`
+
+> 📸 **CAPTURA 14:** Panel de phpMyAdmin mostrando la base de datos `bd_cliente1`
+>
+> *(Insertar aquí captura de pantalla)*
+
+---
+
+## 6. Scripts de Automatización
+
+Los scripts se encuentran en `/usr/local/bin/` y deben tener permisos de ejecución (`chmod +x`).
+
+### 6.1. crear_subdominio.sh
+
+**Ubicación:** `/usr/local/bin/crear_subdominio.sh`
+
+**Función:** Crea un subdominio en el servidor DNS Bind9, añadiendo registros A (directa) y PTR (inversa).
+
+```bash
+#!/bin/bash
+# crear_subdominio.sh <nombre_usuario> <ip>
+
+if [ $# -le 1 ]; then
+    echo "Error! Uso: $0 <nombre_usuario> <ip>"
+    exit 1
+fi
+
+USER=$1
+IP=$2
+SUB_DOMAIN="${USER}.marisma.local"
+ZONE_FILE="/etc/bind/zones/db.marisma.local"
+REV_ZONE_FILE="/etc/bind/zones/db.8.168.192"
+
+echo "[DNS] Creando subdominio ${SUB_DOMAIN}"
+
+# Añadir entrada en zona directa
+echo "" >> $ZONE_FILE
+echo "; ${USER}" >> $ZONE_FILE
+echo "\$ORIGIN ${SUB_DOMAIN}." >> $ZONE_FILE
+echo "@       IN      A       ${IP}" >> $ZONE_FILE
+echo "www     IN      A       ${IP}" >> $ZONE_FILE
+
+# Añadir entrada en zona inversa
+OCTET=$(echo $IP | cut -d. -f4)
+echo "" >> $REV_ZONE_FILE
+echo "; ${USER}" >> $REV_ZONE_FILE
+echo "${OCTET}     IN      PTR     ${SUB_DOMAIN}." >> $REV_ZONE_FILE
+
+# Recargar DNS
+systemctl reload named 2>/dev/null || systemctl reload bind9 2>/dev/null
+echo "[DNS] Subdominio ${SUB_DOMAIN} creado correctamente"
+```
+
+> 📸 **CAPTURA 15:** Contenido del script `crear_subdominio.sh` en el servidor
+>
+> *(Insertar aquí captura de pantalla)*
+
+### 6.2. crear_vhost.sh
+
+**Ubicación:** `/usr/local/bin/crear_vhost.sh`
+
+**Función:** Crea un VirtualHost en Apache2, el directorio web y la página `index.html` por defecto.
+
+```bash
+#!/bin/bash
+# crear_vhost.sh <nombre_usuario>
+
+if [ $# -eq 0 ]; then
+    echo "Error! Uso: $0 <nombre_usuario>"
+    exit 1
+fi
+
+USER=$1
+CONF="${USER}.marisma.conf"
+PATH_AVAILABLE="/etc/apache2/sites-available/${CONF}"
+SUB_DOMAIN="${USER}.marisma.local"
+DOCUMENT_ROOT="/var/www/html/${USER}"
+INDEX="${DOCUMENT_ROOT}/index.html"
+
+echo "[Apache] Creando VirtualHost para ${SUB_DOMAIN}"
+
+if [ ! -d "$DOCUMENT_ROOT" ]; then
+    mkdir -p "$DOCUMENT_ROOT"
+    chown -R "${USER}:${USER}" "$DOCUMENT_ROOT" 2>/dev/null
+fi
+
+cat > $PATH_AVAILABLE <<VHOSTEOF
+<VirtualHost *:80>
+    ServerAdmin admin@${SUB_DOMAIN}
+    ServerName www.${SUB_DOMAIN}
+    ServerAlias ${SUB_DOMAIN}
+    DocumentRoot ${DOCUMENT_ROOT}
+    <Directory ${DOCUMENT_ROOT}>
+        DirectoryIndex index.html index.php
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride all
+        Require all granted
+    </Directory>
+    ErrorLog  /var/log/apache2/${SUB_DOMAIN}.error.log
+    LogLevel error
+    CustomLog /var/log/apache2/${SUB_DOMAIN}.access.log combined
+</VirtualHost>
+VHOSTEOF
+
+# Crear index.html
+cat > $INDEX <<HTMLEOF
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Bienvenido - ${SUB_DOMAIN}</title>
+</head>
+<body>
+    <h1>Subdominio: ${SUB_DOMAIN}</h1>
+    <p>Usuario: ${USER}</p>
+    <p>Bienvenido a tu espacio de alojamiento web.</p>
+</body>
+</html>
+HTMLEOF
+
+# Crear info.php
+echo "<?php phpinfo(); ?>" > ${DOCUMENT_ROOT}/info.php
+
+chown -R "${USER}:${USER}" "$DOCUMENT_ROOT" 2>/dev/null
+a2ensite $CONF 2>/dev/null
+systemctl reload apache2
+
+echo "[Apache] VirtualHost ${SUB_DOMAIN} creado y habilitado"
+```
+
+> 📸 **CAPTURA 16:** Contenido del script `crear_vhost.sh` en el servidor
+>
+> *(Insertar aquí captura de pantalla)*
+
+### 6.3. crear_usuario.sh (Script Maestro)
+
+**Ubicación:** `/usr/local/bin/crear_usuario.sh`
+
+**Función:** Script completo que automatiza todo el proceso de alta de un nuevo cliente en **6 pasos**:
+
+1. **Creación del usuario del sistema** (con home y contraseña aleatoria)
+2. **Creación del directorio web** (`/var/www/html/<usuario>/`)
+3. **Creación del VirtualHost** en Apache (llama a `crear_vhost.sh`)
+4. **Creación del subdominio** en DNS (llama a `crear_subdominio.sh`)
+5. **Creación de base de datos** y usuario MySQL con todos los privilegios
+6. **Configuración de Python WSGI** (archivo `app.wsgi`)
+
+```bash
+#!/bin/bash
+# crear_usuario.sh <nombre_usuario> <ip>
+
+if [ $# -ne 2 ]; then
+    echo "Uso: $0 <nombre_usuario> <ip>"
+    exit 1
+fi
+
+USER=$1
+IP=$2
+PASS_USER=$(openssl rand -base64 12)
+SUB_DOMAIN="${USER}.marisma.local"
+DOCUMENT_ROOT="/var/www/html/${USER}"
+DB_NAME="bd_${USER}"
+DB_USER="user_${USER}"
+DB_PASS=$(openssl rand -base64 12)
+
+echo "=========================================="
+echo "Creando cliente: ${USER}"
+echo "=========================================="
+
+# Paso 1: Crear usuario del sistema
+echo "[1/6] Creando usuario del sistema..."
+useradd -m -d "/home/${USER}" -s /bin/bash "${USER}" 2>/dev/null
+echo "${USER}:${PASS_USER}" | chpasswd
+
+# Paso 2: Crear directorio web
+echo "[2/6] Creando directorio web..."
+mkdir -p "${DOCUMENT_ROOT}"
+chown -R "${USER}:${USER}" "${DOCUMENT_ROOT}"
+
+# Paso 3: Crear VirtualHost
+echo "[3/6] Creando VirtualHost en Apache..."
+/usr/local/bin/crear_vhost.sh "${USER}"
+
+# Paso 4: Crear subdominio DNS
+echo "[4/6] Creando subdominio en DNS..."
+/usr/local/bin/crear_subdominio.sh "${USER}" "${IP}"
+
+# Paso 5: Crear base de datos MySQL
+echo "[5/6] Creando base de datos MySQL..."
+mysql -u root <<SQL
+CREATE DATABASE IF NOT EXISTS ${DB_NAME};
+CREATE USER IF NOT EXISTS '${DB_USER}'@'localhost' IDENTIFIED BY '${DB_PASS}';
+GRANT ALL PRIVILEGES ON ${DB_NAME}.* TO '${DB_USER}'@'localhost';
+FLUSH PRIVILEGES;
+SQL
+
+# Paso 6: Configurar Python WSGI
+echo "[6/6] Configurando soporte Python WSGI..."
+cat > "${DOCUMENT_ROOT}/app.wsgi" <<PYEOF
+def application(environ, start_response):
+    status = '200 OK'
+    output = '<h1>Aplicacion Python WSGI funcionando</h1>'
+    output += '<p>Subdominio: ${SUB_DOMAIN}</p>'
+    output += '<p>Usuario: ${USER}</p>'
+    response_headers = [('Content-type', 'text/html; charset=utf-8')]
+    start_response(status, response_headers)
+    return [output.encode('utf-8')]
+PYEOF
+chown "${USER}:${USER}" "${DOCUMENT_ROOT}/app.wsgi"
+
+echo "=========================================="
+echo "Cliente ${USER} creado correctamente"
+echo "=========================================="
+echo "Subdominio: http://${SUB_DOMAIN}"
+echo "Directorio web: ${DOCUMENT_ROOT}"
+echo "FTP/SSH usuario: ${USER} / ${PASS_USER}"
+echo "Base de datos: ${DB_NAME} / ${DB_USER} / ${DB_PASS}"
+echo "Python WSGI: http://${SUB_DOMAIN}/app.wsgi"
+echo "phpMyAdmin: http://192.168.8.167/phpmyadmin"
+```
+
+> 📸 **CAPTURA 17:** Contenido del script `crear_usuario.sh` en el servidor
+>
+> *(Insertar aquí captura de pantalla)*
+
+---
+
+## 7. Prueba de Funcionamiento
+
+### 7.1. Creación de un cliente de prueba
+
+Ejecución del script maestro para crear el cliente `cliente1`:
+
+```bash
+sudo /usr/local/bin/crear_usuario.sh cliente1 192.168.8.167
+```
+
+> 📸 **CAPTURA 18:** Ejecución del script `crear_usuario.sh` — Salida completa mostrando los 6 pasos
+>
+> *(Insertar aquí captura de pantalla)*
+
+### 7.2. Verificación de resultados
+
+#### Usuario del sistema
+
+```bash
+id cliente1
+```
+
+> 📸 **CAPTURA 19:** `id cliente1` — Verificar que el usuario existe
+>
+> *(Insertar aquí captura de pantalla)*
+
+#### Directorio web
+
+```bash
+ls -la /var/www/html/cliente1/
+```
+
+> 📸 **CAPTURA 20:** `ls -la /var/www/html/cliente1/` — Archivos del cliente
+>
+> *(Insertar aquí captura de pantalla)*
+
+#### VirtualHost de Apache
+
+```bash
+sudo apache2ctl -S | grep cliente1
+```
+
+> 📸 **CAPTURA 21:** `sudo apache2ctl -S` — VirtualHost activo para cliente1
+>
+> *(Insertar aquí captura de pantalla)*
+
+#### Registro DNS
+
+```bash
+grep cliente1 /etc/bind/zones/db.marisma.local
+```
+
+> 📸 **CAPTURA 22:** Registro DNS del subdominio cliente1.marisma.local
+>
+> *(Insertar aquí captura de pantalla)*
+
+#### Base de datos MySQL
+
+```bash
+sudo mysql -e "SHOW DATABASES LIKE '%cliente1%';"
+sudo mysql -e "SHOW GRANTS FOR 'user_cliente1'@'localhost';"
+```
+
+> 📸 **CAPTURA 23:** Base de datos `bd_cliente1` y privilegios del usuario
+>
+> *(Insertar aquí captura de pantalla)*
+
+#### Acceso web
+
+```bash
+curl -s -H "Host: cliente1.marisma.local" http://192.168.8.167/
+```
+
+> 📸 **CAPTURA 24:** Página web del cliente accediendo por HTTP
+>
+> *(Insertar aquí captura de pantalla del navegador mostrando la página)*
+
+#### PHP funcionando
+
+```bash
+curl -s -H "Host: cliente1.marisma.local" http://192.168.8.167/info.php | head -20
+```
+
+> 📸 **CAPTURA 25:** Página `info.php` mostrando que PHP funciona correctamente
+>
+> *(Insertar aquí captura de pantalla)*
+
+#### Python WSGI
+
+```bash
+curl -s -H "Host: cliente1.marisma.local" http://192.168.8.167/app.wsgi
+```
+
+> 📸 **CAPTURA 26:** Aplicación Python WSGI funcionando
+>
+> *(Insertar aquí captura de pantalla)*
+
+#### Acceso FTP con TLS
+
+> 📸 **CAPTURA 27:** Cliente FTP (FileZilla) conectado mediante SFTP o FTP con TLS a `192.168.8.167` con usuario `cliente1`
+>
+> *(Insertar aquí captura de pantalla de FileZilla mostrando archivos)*
+
+#### Acceso SSH
+
+```bash
+ssh cliente1@192.168.8.167
+```
+
+> 📸 **CAPTURA 28:** Conexión SSH exitosa con el usuario `cliente1`
+>
+> *(Insertar aquí captura de pantalla)*
+
+#### phpMyAdmin
+
+> 📸 **CAPTURA 29:** phpMyAdmin mostrando la base de datos `bd_cliente1`
+>
+> *(Insertar aquí captura de pantalla del navegador)*
+
+### 7.3. Resumen de comprobaciones
+
+| Comprobación | Comando | Resultado esperado |
+|-------------|---------|-------------------|
+| Apache | `systemctl status apache2` | `active (running)` |
+| MariaDB | `systemctl status mariadb` | `active (running)` |
+| ProFTPD | `systemctl status proftpd` | `active (running)` |
+| Bind9 | `systemctl status named` | `active (running)` |
+| SSH | `systemctl status ssh` | `active (running)` |
+| Usuario creado | `id cliente1` | `uid=1001(cliente1)` |
+| Web accesible | `curl http://cliente1.marisma.local` | Código HTML 200 |
+| DNS resuelve | `nslookup cliente1.marisma.local` | IP `192.168.8.167` |
+| Base de datos | `mysql -e "SHOW DATABASES"` | `bd_cliente1` |
+| PHP | curl al `info.php` | `phpinfo()` |
+| Python | curl al `app.wsgi` | `"Python WSGI funcionando"` |
+
+> 📸 **CAPTURA 30:** `sudo systemctl status apache2 mariadb proftpd named ssh` — Todos los servicios activos
+>
+> *(Insertar aquí captura de pantalla con el estado de todos los servicios)*
+
+---
+
+## 8. Docker (Opcional)
+
+*Este apartado puede suponer hasta el 10% adicional de la nota.*
+
+### Estructura propuesta
+
+```
+docker/
+├── docker-compose.yml
+├── dns/
+│   ├── Dockerfile
+│   └── named.conf
+├── web/
+│   ├── Dockerfile
+│   └── sites/
+├── db/
+│   └── Dockerfile
+└── scripts/
+    └── deploy.sh
+```
+
+### docker-compose.yml
+
+```yaml
+version: '3.8'
+
+services:
+  dns:
+    build: ./dns
+    container_name: dns-server
+    ports:
+      - "53:53/udp"
+      - "53:53/tcp"
+    volumes:
+      - ./dns/zones:/etc/bind/zones
+    networks:
+      web-network:
+        ipv4_address: 172.20.0.2
+
+  web:
+    build: ./web
+    container_name: web-server
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./www:/var/www/html
+    networks:
+      web-network:
+        ipv4_address: 172.20.0.3
+    depends_on:
+      - dns
+      - db
+
+  db:
+    image: mariadb:latest
+    container_name: db-server
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: phpmyadmin
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      web-network:
+        ipv4_address: 172.20.0.4
+
+volumes:
+  db-data:
+
+networks:
+  web-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+```
+
+> 📸 **CAPTURA 31:** `docker-compose ps` o `docker ps` — Contenedores en ejecución
+>
+> *(Insertar aquí captura de pantalla)*
+
+---
+
+## 9. Conclusiones
+
+En esta práctica se ha conseguido:
+
+1. ✅ **Instalar y configurar** un servidor Ubuntu con todos los servicios necesarios para alojamiento web.
+2. ✅ **Automatizar** el proceso de alta de clientes mediante 3 scripts que crean el usuario, el VirtualHost de Apache, el subdominio DNS y la base de datos MySQL en **6 pasos**.
+3. ✅ **Asegurar** las comunicaciones FTP mediante cifrado TLS.
+4. ✅ **Proporcionar** a cada cliente:
+   - Alojamiento de páginas web estáticas (HTML) y dinámicas (PHP)
+   - Base de datos MySQL con phpMyAdmin
+   - Subdominio propio con resolución DNS directa e inversa
+   - Acceso FTP con TLS, SSH y SFTP
+   - Capacidad de ejecutar aplicaciones Python
+
+> 📸 **CAPTURA 32:** Esquema final del despliegue — Todo funcionando
+>
+> *(Insertar aquí captura de pantalla final)*
+
+---
+
+## 10. Referencias
+
+- [Tutorial de Shell Scripting](https://www.shellscript.sh/index.html)
+- [Creación de subdominios con script en Bind9](http://bash.cyberciti.biz/domain/create-bind9-domain-zone-configuration-file/)
+- [Python para administradores de sistemas](https://python-for-system-administrators.readthedocs.io/en/latest/)
+- [Documentación oficial de Apache HTTP Server](https://httpd.apache.org/docs/)
+- [Documentación de ProFTPD](http://www.proftpd.org/docs/)
+- [Documentación de Bind9](https://bind9.readthedocs.io/)
+- [Documentación de MariaDB](https://mariadb.com/docs/)
+- [Documentación de Docker Compose](https://docs.docker.com/compose/)
+
+---
+
+*Documentación generada para la Práctica 2º Trimestre - ASIR 2025/2026*
+*Servidor: 192.168.8.167 | Usuario admin: mario*
