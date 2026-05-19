@@ -37,3 +37,7 @@
 <br>
 
 [S5. Instalación Wordpress en AWS](ActividadesAWS/Wordpress_en_Instancia_EC2.md)
+
+<br>
+
+[Practica 2 Trimestre](Practica_2_Trimestre/Practica_2_trimestre.md)
