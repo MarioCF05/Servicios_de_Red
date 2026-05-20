@@ -38,7 +38,6 @@ También hay **pseudodominios** raros como `.onion` (de la red Tor, modo hacker)
 | `serv1.bar.com.` | Host `serv1`, dominio `bar`, TLD `.com`, raíz `.` |
 | `smtp.oficina.empresa.es.` | Host `smtp`, subdominio `oficina`, dominio `empresa`, TLD `.es` |
 
-> **Ojo:** Según los estándares de la ICANN, el punto final es obligatorio, aunque en la práctica casi nadie lo pone. Ya sabes, cosas de los RFC.
 
 ---
 
