@@ -16,6 +16,8 @@ Aprender a desplegar escenarios multicontenedor con Docker Compose usando un fic
 ### Crear el fichero `docker-compose.yaml`
 
 Crea un directorio para el ejemplo y dentro un fichero `docker-compose.yaml`:
+<img width="1719" height="172" alt="image" src="https://github.com/user-attachments/assets/1aa36b0d-25d9-45bb-a525-c25666c66a34" />
+
 
 ```yaml
 version: '3.1'
@@ -39,7 +41,8 @@ volumes:
   redis:
 ```
 
-> *Captura de pantalla aquí (contenido del fichero)*
+<img width="1716" height="713" alt="image" src="https://github.com/user-attachments/assets/22d7fcb5-1173-4882-b2bb-4a1f3bea37eb" />
+
 
 ### Levantar el escenario
 
@@ -47,7 +50,8 @@ volumes:
 docker compose up -d
 ```
 
-> *Captura de pantalla aquí*
+<img width="1715" height="274" alt="image" src="https://github.com/user-attachments/assets/39b6390c-167b-4ff6-b99f-b053735638e9" />
+
 
 ### Listar los contenedores
 
@@ -55,13 +59,15 @@ docker compose up -d
 docker compose ps
 ```
 
-> *Captura de pantalla aquí*
+<img width="1717" height="194" alt="image" src="https://github.com/user-attachments/assets/d0c69c14-92f0-4d6a-9e87-fa40dd368c87" />
+
 
 ### Acceder a la aplicación
 
 Abre el navegador en `http://localhost:8080`. Deberías ver la aplicación Guestbook.
 
-> *Captura de pantalla aquí (navegador)*
+<img width="1719" height="642" alt="image" src="https://github.com/user-attachments/assets/10459faa-803c-4e97-bbce-b8b540706609" />
+
 
 ### Parar y eliminar el escenario
 
@@ -75,7 +81,8 @@ Para eliminar también el volumen:
 docker compose down -v
 ```
 
-> *Captura de pantalla aquí*
+<img width="1716" height="580" alt="image" src="https://github.com/user-attachments/assets/d7c0226e-c205-4627-a918-7e3a93f4ce87" />
+
 
 ---
 
@@ -102,7 +109,8 @@ services:
     restart: always
 ```
 
-> *Captura de pantalla aquí (contenido del fichero)*
+<img width="1716" height="706" alt="image" src="https://github.com/user-attachments/assets/c9a58957-4027-493d-a995-2f4b3fbf9b40" />
+
 
 ### Levantar el escenario
 
