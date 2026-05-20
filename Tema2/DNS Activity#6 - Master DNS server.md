@@ -170,10 +170,11 @@ sudo nano /etc/resolv.conf
 
 ```
 search marisma.intranet
-nameserver 192.168.X.27
+nameserver 192.168.8.190
 ```
 
-![resolv.conf cliente](capturas/actividad6/resolv_conf_cliente.png)
+<img width="1099" height="519" alt="image" src="https://github.com/user-attachments/assets/c72ac800-9b90-4a5e-aa66-39779957ac6d" />
+
 
 ### 7.1 Si ping no funciona (nsswitch.conf)
 
@@ -197,7 +198,8 @@ sudo apt-get remove libnss-mdns -y
 dig marisma.intranet SOA
 ```
 
-![Consulta SOA](capturas/actividad6/dig_soa.png)
+<img width="1420" height="652" alt="image" src="https://github.com/user-attachments/assets/46438944-7171-4d4d-8851-a6951a80f86c" />
+
 
 ### 8.2 Consulta NS
 
@@ -205,7 +207,8 @@ dig marisma.intranet SOA
 dig marisma.intranet NS
 ```
 
-![Consulta NS](capturas/actividad6/dig_ns.png)
+<img width="945" height="510" alt="image" src="https://github.com/user-attachments/assets/883205d6-99e0-4c1c-b900-71f6252c8cc2" />
+
 
 ### 8.3 Consulta MX
 
@@ -213,7 +216,8 @@ dig marisma.intranet NS
 dig marisma.intranet MX
 ```
 
-![Consulta MX](capturas/actividad6/dig_mx.png)
+<img width="1069" height="583" alt="image" src="https://github.com/user-attachments/assets/7c7ee11f-c34a-4dd8-a74d-b79812614cf6" />
+
 
 ### 8.4 Consultas A (directas)
 
@@ -224,15 +228,18 @@ dig mail1.marisma.intranet
 dig ns1.marisma.intranet
 ```
 
-![Consultas A](capturas/actividad6/dig_a.png)
+<img width="762" height="1242" alt="image" src="https://github.com/user-attachments/assets/f4abc70d-36d3-4aab-801c-1aa35ebc6b61" />
+<img width="736" height="464" alt="image" src="https://github.com/user-attachments/assets/7a04c87e-cc09-4fd8-bab3-f91bd9110684" />
+
 
 ### 8.5 Resolución inversa
 
 ```bash
-dig -x 192.168.X.27
+dig -x 192.168.8.190
 ```
 
-![Resolución inversa](capturas/actividad6/dig_inversa.png)
+<img width="733" height="542" alt="image" src="https://github.com/user-attachments/assets/12455c50-e604-4c5f-ab59-2f7c8aa80f4b" />
+
 
 ### 8.6 Ping y nslookup
 
@@ -241,6 +248,7 @@ ping -c 2 www.marisma.intranet
 nslookup www.marisma.intranet
 ```
 
-![Ping y nslookup](capturas/actividad6/ping_nslookup.png)
+<img width="835" height="309" alt="image" src="https://github.com/user-attachments/assets/5be3fbd6-6518-4302-8ff2-3c83129a9e2f" />
+
 
 ---
