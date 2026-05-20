@@ -30,7 +30,7 @@ Una MV se lleva su propio sistema operativo invitado —ocupa GB y tarda minutos
 - `docker ps` — ver contenedores activos (con `-a` ves también los muertos).
 - `docker rmi <imagen>` — borrar una imagen ("meterla en la papelera").
 
-**Analogía informal:**  
+
 Una imagen es como una **receta de cocina**. El contenedor es el **plato cocinado**. Puedes tener la receta guardada (imagen) y cocinarla mil veces (crear mil contenedores). Si modificas el plato, la receta original sigue intacta. Para cambiar la receta necesitas un `Dockerfile` —algo así como anotar los cambios en los márgenes y luego publicar una nueva versión de la receta.
 
 **Capas (layers):**  
@@ -48,7 +48,7 @@ Los contenedores son efímeros por naturaleza: los datos que genera un contenedo
 
 - **Bind mounts:** montas directamente una carpeta del host dentro del contenedor. Le dices al contenedor: "mira, ahí en `C:\Users\mario\datos` está tu carpeta, úsala". Sirve para desarrollo, porque editas en el host y el contenedor lo ve al instante.
 
-**Analogía informal:**  
+
 Un contenedor sin volumen es como un **táper de un solo uso** —tiras el táper con la comida. Un volumen es un **táper reutilizable**: tiras la comida vieja, pero el táper se queda para la próxima. Un bind mount es como tener la cocina abierta: el chef (contenedor) cocina directamente en tu encimera (host) y tú ves los cambios en tiempo real.
 
 **Diferencia clave:**
