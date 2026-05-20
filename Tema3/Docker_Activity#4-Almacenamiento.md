@@ -20,7 +20,8 @@ Aplicación web que guarda mensajes en una base de datos Redis. Consta de dos se
 docker network create red_guestbook
 ```
 
-> *Captura de pantalla aquí*
+<img width="1718" height="126" alt="image" src="https://github.com/user-attachments/assets/8270d8cf-6bbe-46ab-b981-262f8f78e90f" />
+
 
 ### Ejecutar el contenedor de Redis con volumen persistente
 
@@ -33,7 +34,8 @@ docker run -d --name redis \
   redis redis-server --appendonly yes
 ```
 
-> *Captura de pantalla aquí*
+<img width="1714" height="403" alt="image" src="https://github.com/user-attachments/assets/ade3df2b-1024-4177-9b59-6249877d9570" />
+
 
 ### Ejecutar el contenedor de Guestbook
 
@@ -46,13 +48,15 @@ docker run -d -p 80:5000 \
   iesgn/guestbook
 ```
 
-> *Captura de pantalla aquí*
+<img width="1719" height="471" alt="image" src="https://github.com/user-attachments/assets/056fad59-857d-4ad2-b17b-8a90884dd38d" />
+
 
 ### Acceder a la aplicación
 
 Abre el navegador y visita `http://localhost`. Deberías ver la aplicación Guestbook. Prueba a añadir algún mensaje.
 
-> *Captura de pantalla aquí (navegador mostrando la aplicación)*
+<img width="1717" height="667" alt="image" src="https://github.com/user-attachments/assets/cb847381-226c-44f5-bb7c-948618999c39" />
+
 
 ### Verificar la persistencia
 
@@ -67,7 +71,8 @@ docker run -d --name redis \
   redis redis-server --appendonly yes
 ```
 
-> *Captura de pantalla aquí*
+<img width="1717" height="988" alt="image" src="https://github.com/user-attachments/assets/2a4cb1a8-d60b-4be2-b732-4ab482155739" />
+
 
 ---
 
@@ -81,7 +86,8 @@ Aplicación sin estado (*stateless*) para consultar temperaturas mínimas y máx
 docker network create red_temperaturas
 ```
 
-> *Captura de pantalla aquí*
+<img width="1720" height="117" alt="image" src="https://github.com/user-attachments/assets/15ba9323-595a-47e7-8b1e-a634ae0846f9" />
+
 
 ### Ejecutar el contenedor backend
 
@@ -93,7 +99,8 @@ docker run -d --name temperaturas-backend \
   iesgn/temperaturas_backend
 ```
 
-> *Captura de pantalla aquí*
+<img width="1715" height="307" alt="image" src="https://github.com/user-attachments/assets/4bc10c1e-90d8-41bb-b136-112cb2a24676" />
+
 
 ### Ejecutar el contenedor frontend
 
@@ -104,33 +111,17 @@ docker run -d -p 80:3000 \
   iesgn/temperaturas_frontend
 ```
 
-> *Captura de pantalla aquí*
+<img width="1717" height="318" alt="image" src="https://github.com/user-attachments/assets/fcfc2ddd-6af7-45bc-b525-7d4f8c6e6d39" />
+
 
 ### Acceder a la aplicación
 
 Abre el navegador y visita `http://localhost`. Deberías ver el buscador de municipios.
 
-> *Captura de pantalla aquí (navegador mostrando la aplicación)*
+<img width="1718" height="712" alt="image" src="https://github.com/user-attachments/assets/bb54b0bb-83de-4fb4-afb7-431ab39fdeaa" />
+
 
 > **Nota:** Esta aplicación no necesita volúmenes porque es **sin estado** — no guarda información. Toda la configuración se pasa por variables de entorno o nombres DNS.
-
-### (Opcional) Configurar con nombre personalizado
-
-Si el backend se llama distinto, se pasa la variable `TEMP_SERVER`:
-
-```bash
-docker run -d --name temperaturas-api \
-  --network red_temperaturas \
-  iesgn/temperaturas_backend
-
-docker run -d -p 80:3000 \
-  --name temperaturas-frontend \
-  -e TEMP_SERVER=temperaturas-api:5000 \
-  --network red_temperaturas \
-  iesgn/temperaturas_frontend
-```
-
-> *Captura de pantalla aquí*
 
 ---
 
@@ -144,7 +135,8 @@ WordPress con base de datos MariaDB, usando volúmenes para persistir tanto los 
 docker network create red_wp
 ```
 
-> *Captura de pantalla aquí*
+<img width="1716" height="133" alt="image" src="https://github.com/user-attachments/assets/f29de7e1-8f85-4009-ab18-401445133c06" />
+
 
 ### Ejecutar el contenedor de MariaDB
 
@@ -159,7 +151,8 @@ docker run -d --name servidor_mysql \
   mariadb
 ```
 
-> *Captura de pantalla aquí*
+<img width="1716" height="516" alt="image" src="https://github.com/user-attachments/assets/85f56d3d-315c-424f-818d-fd8bb7e1b1cc" />
+
 
 ### Ejecutar el contenedor de WordPress
 
@@ -175,7 +168,8 @@ docker run -d --name servidor_wp \
   wordpress
 ```
 
-> *Captura de pantalla aquí*
+<img width="1713" height="828" alt="image" src="https://github.com/user-attachments/assets/ff638e93-1931-4dc0-9e2c-1c554c403c14" />
+
 
 ### Verificar los contenedores en ejecución
 
@@ -183,13 +177,15 @@ docker run -d --name servidor_wp \
 docker ps
 ```
 
-> *Captura de pantalla aquí*
+<img width="1714" height="152" alt="image" src="https://github.com/user-attachments/assets/a0db565d-cd9a-418c-bae6-fec1bfd0b249" />
+
 
 ### Acceder a WordPress
 
 Abre el navegador y visita `http://localhost`. Deberías ver el instalador de WordPress. Como ya pasamos las variables de entorno, la configuración de la base de datos ya está hecha automáticamente.
 
-> *Captura de pantalla aquí (navegador mostrando WordPress)*
+<img width="1716" height="872" alt="image" src="https://github.com/user-attachments/assets/d50668e3-b29e-4f08-84b0-e249d3c048d9" />
+
 
 ### Probar la persistencia
 
