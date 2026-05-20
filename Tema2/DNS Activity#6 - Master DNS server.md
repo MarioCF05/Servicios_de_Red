@@ -75,20 +75,20 @@ $TTL    604800
 @       IN      NS      ns1.marisma.intranet.
 
 ; Servidor DNS
-ns1     IN      A       192.168.X.27
+ns1     IN      A       192.168.8.190
 
 ; Servidores de correo
-mail1   IN      A       192.168.X.27
-mail2   IN      A       192.168.X.27
+mail1   IN      A       192.168.8.190
+mail2   IN      A       192.168.8.190
 @       IN      MX      10 mail1.marisma.intranet.
 @       IN      MX      20 mail2.marisma.intranet.
 
 ; Servidores web
-www     IN      A       192.168.X.27
-departamentos IN    A   192.168.X.27
+www     IN      A       192.168.8.190
+departamentos IN    A   192.168.8.190
 
 ; Servidor FTP
-ftp1    IN      A       192.168.X.27
+ftp1    IN      A       192.168.8.190
 ```
 
 <img width="1145" height="701" alt="image" src="https://github.com/user-attachments/assets/fb6c2c50-1a49-492e-b746-726124fb55f0" />
@@ -98,12 +98,12 @@ ftp1    IN      A       192.168.X.27
 
 | FQDN | Tipo | IP |
 |------|------|----|
-| `ns1.marisma.intranet` | A | 192.168.X.27 |
-| `ftp1.marisma.intranet` | A | 192.168.X.27 |
-| `mail1.marisma.intranet` | A | 192.168.X.27 |
-| `mail2.marisma.intranet` | A | 192.168.X.27 |
-| `www.marisma.intranet` | A | 192.168.X.27 |
-| `departamentos.marisma.intranet` | A | 192.168.X.27 |
+| `ns1.marisma.intranet` | A | 192.168.8.190 |
+| `ftp1.marisma.intranet` | A | 192.168.8.190 |
+| `mail1.marisma.intranet` | A | 192.168.8.190 |
+| `mail2.marisma.intranet` | A | 192.168.8.190 |
+| `www.marisma.intranet` | A | 192.168.8.190 |
+| `departamentos.marisma.intranet` | A | 192.168.8.190 |
 
 ## 4. Crear archivo de zona inversa
 
