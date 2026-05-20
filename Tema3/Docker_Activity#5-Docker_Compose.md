@@ -29,7 +29,7 @@ services:
     environment:
       REDIS_SERVER: redis
     ports:
-      - 8080:5000
+      - 8082:5000
   db:
     container_name: redis
     image: redis
@@ -64,7 +64,7 @@ docker compose ps
 
 ### Acceder a la aplicación
 
-Abre el navegador en `http://localhost:8080`. Deberías ver la aplicación Guestbook.
+Abre el navegador en `http://192.168.8.190:8082`. Deberías ver la aplicación Guestbook.
 
 <img width="1719" height="642" alt="image" src="https://github.com/user-attachments/assets/10459faa-803c-4e97-bbce-b8b540706609" />
 
@@ -135,7 +135,7 @@ docker compose ps
 
 ### Acceder a la aplicación
 
-Abre el navegador en `http://localhost:8081`. Deberías ver el buscador de municipios.
+Abre el navegador en `http://192.168.8.190:8081`. Deberías ver el buscador de municipios.
 
 <img width="1717" height="663" alt="image" src="https://github.com/user-attachments/assets/48315991-f881-41bb-838e-34b903b64706" />
 
@@ -246,7 +246,7 @@ docker compose ps
 
 ### Acceder a WordPress
 
-Abre el navegador en `http://localhost`. Deberías ver la instalación de WordPress (ya configurada con la BD gracias a las variables de entorno).
+Abre el navegador en `http://192.168.8.190`. Deberías ver la instalación de WordPress (ya configurada con la BD gracias a las variables de entorno).
 
 <img width="1715" height="794" alt="image" src="https://github.com/user-attachments/assets/5ed4c11f-e426-4f99-86ee-d8f00f0031b1" />
 
