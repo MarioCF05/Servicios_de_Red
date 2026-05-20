@@ -102,15 +102,22 @@ COPY public_html /usr/local/apache2/htdocs/
 EXPOSE 80
 ```
 
+<img width="1717" height="711" alt="image" src="https://github.com/user-attachments/assets/fcad18d7-8c93-4355-baa2-c520d9fd913b" />
+
+
 ```bash
 cd ~/docker/ejemplo1
 docker build -t mario/ejemplo1:v2 .
 docker run -d -p 8081:80 --name ejemplo1-v2 mario/ejemplo1:v2
 ```
 
-Accede en: `http://<IP>:8081`
+<img width="1718" height="711" alt="image" src="https://github.com/user-attachments/assets/d073f3a7-8096-4515-b743-e10e94e55e31" />
 
-> *Captura de pantalla aquí (build y navegador)*
+
+Accede en: `http://192.168.8.190:8081`
+
+<img width="1719" height="246" alt="image" src="https://github.com/user-attachments/assets/9906d935-ee72-43bc-9486-7b548bb82f0c" />
+
 
 ---
 
@@ -122,15 +129,22 @@ COPY public_html /usr/share/nginx/html
 EXPOSE 80
 ```
 
+<img width="1717" height="709" alt="image" src="https://github.com/user-attachments/assets/e31f20a5-bc32-491f-a983-92bc55cb8be9" />
+
+
 ```bash
 cd ~/docker/ejemplo1
 docker build -t mario/ejemplo1:v3 .
 docker run -d -p 8082:80 --name ejemplo1-v3 mario/ejemplo1:v3
 ```
 
-Accede en: `http://<IP>:8082`
+<img width="1712" height="789" alt="image" src="https://github.com/user-attachments/assets/6e1fd5ea-7532-42bd-8526-55d3200cba88" />
 
-> *Captura de pantalla aquí (build y navegador)*
+
+Accede en: `http://192.168.8.190:8082/`
+
+<img width="1719" height="336" alt="image" src="https://github.com/user-attachments/assets/2ab995ac-980f-4bfb-8bfa-303bb81d7d53" />
+
 
 ---
 
@@ -169,19 +183,23 @@ echo "<p>Versión de PHP: " . phpversion() . "</p>";
 <?php phpinfo(); ?>
 ```
 
-> *Captura de pantalla aquí*
+<img width="1718" height="309" alt="image" src="https://github.com/user-attachments/assets/811306be-ab9f-4239-aacc-bf0cc844c6ed" />
+
 
 #### Crear el Dockerfile
 
 ```dockerfile
 FROM ubuntu:22.04
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=Europe/Madrid
 RUN apt update && apt install -y apache2 libapache2-mod-php php && apt clean && rm -rf /var/lib/apt/lists/* && rm /var/www/html/index.html
 COPY app /var/www/html/
 EXPOSE 80
 CMD apache2ctl -D FOREGROUND
 ```
 
-> *Captura de pantalla aquí*
+<img width="1716" height="164" alt="image" src="https://github.com/user-attachments/assets/810893c8-f62f-4333-860c-98c2b00f914e" />
+
 
 #### Construir y ejecutar
 
@@ -191,13 +209,15 @@ docker build -t mario/ejemplo2:v1 .
 docker run -d -p 8083:80 --name ejemplo2 mario/ejemplo2:v1
 ```
 
-> *Captura de pantalla aquí*
+<img width="1721" height="576" alt="image" src="https://github.com/user-attachments/assets/ae76fcf8-7bbf-4146-b85e-7a3557e4c170" />
+
 
 #### Acceder
 
-`http://<IP>:8083` y `http://<IP>:8083/info.php`
+`http://192.168.8.190:8083` y `http://192.168.8.190:8083/info.php`
 
-> *Captura de pantalla aquí (navegador)*
+<img width="1717" height="1391" alt="image" src="https://github.com/user-attachments/assets/e7f2ffbc-3417-485a-9458-4db08d6d6e7c" />
+
 
 ---
 
@@ -215,9 +235,13 @@ docker build -t mario/ejemplo2:v2 .
 docker run -d -p 8084:80 --name ejemplo2-v2 mario/ejemplo2:v2
 ```
 
-Accede en: `http://<IP>:8084/info.php`
+<img width="1716" height="1071" alt="image" src="https://github.com/user-attachments/assets/3d7ff63a-6e24-47c5-b2df-4c6a053b12c4" />
 
-> *Captura de pantalla aquí (build y navegador con info.php)*
+
+Accede en: `http://192.168.8.190:8084/info.php`
+
+<img width="1719" height="1391" alt="image" src="https://github.com/user-attachments/assets/3726fa1e-0642-4f68-8b6f-044a739a0e91" />
+
 
 ---
 
@@ -261,7 +285,8 @@ if __name__ == '__main__':
 flask
 ```
 
-> *Captura de pantalla aquí*
+<img width="1718" height="370" alt="image" src="https://github.com/user-attachments/assets/bd195979-d05d-4960-b133-834c200f2589" />
+
 
 #### Crear el Dockerfile
 
@@ -270,28 +295,32 @@ FROM ubuntu:22.04
 RUN apt update && apt install -y python3-pip && apt clean && rm -rf /var/lib/apt/lists/*
 WORKDIR /usr/share/app
 COPY app .
-RUN pip3 install --no-cache-dir --break-system-packages -r requirements.txt
+RUN pip3 install --no-cache-dir -r requirements.txt
 EXPOSE 3000
 CMD python3 app.py
 ```
 
-> *Captura de pantalla aquí*
+<img width="1716" height="250" alt="image" src="https://github.com/user-attachments/assets/59ddbcde-221b-4f75-9dff-729049a5a492" />
+
+
 
 #### Construir y ejecutar
 
 ```bash
 cd ~/docker/ejemplo3
 docker build -t mario/ejemplo3:v1 .
-docker run -d -p 8085:3000 --name ejemplo3-v1 mario/ejemplo3:v1
+docker run -d -p 8086:3000 --name ejemplo3-v1 mario/ejemplo3:v1
 ```
 
-> *Captura de pantalla aquí*
+<img width="1716" height="628" alt="image" src="https://github.com/user-attachments/assets/96faf3b5-1e22-4439-8b6f-5e2bdd2259d1" />
+
 
 #### Acceder
 
-`http://<IP>:8085`
+`http://192.168.8.190:8086`
 
-> *Captura de pantalla aquí (navegador)*
+<img width="1714" height="277" alt="image" src="https://github.com/user-attachments/assets/3fac3fe1-0c69-4c00-bace-ff640f10a7cd" />
+
 
 ---
 
@@ -305,16 +334,23 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 3000
 CMD python app.py
 ```
+<img width="1716" height="259" alt="image" src="https://github.com/user-attachments/assets/6343ad2a-bc5a-4462-8efa-ef48d7d3e6bf" />
+
 
 ```bash
 cd ~/docker/ejemplo3
 docker build -t mario/ejemplo3:v2 .
-docker run -d -p 8086:3000 --name ejemplo3-v2 mario/ejemplo3:v2
+docker run -d -p 8087:3000 --name ejemplo3-v2 mario/ejemplo3:v2
 ```
 
-Accede en: `http://<IP>:8086`
+<img width="1717" height="765" alt="image" src="https://github.com/user-attachments/assets/c368d652-384e-4d04-8988-7550affcd67b" />
 
-> *Captura de pantalla aquí (build y navegador)*
+
+Accede en: `http://192.168.8.190:8087`
+
+<img width="1718" height="252" alt="image" src="https://github.com/user-attachments/assets/2f83a618-fb3d-4052-9c6c-a6348dac2cb0" />
+
+
 
 ---
 
@@ -337,7 +373,8 @@ docker rmi mario/ejemplo1:v1 mario/ejemplo1:v2 mario/ejemplo1:v3 \
           mario/ejemplo3:v1 mario/ejemplo3:v2
 ```
 
-> *Captura de pantalla aquí*
+<img width="1715" height="706" alt="image" src="https://github.com/user-attachments/assets/3bf178b1-dc02-4218-8cb2-46bd8169bc62" />
+
 
 ---
 
