@@ -41,11 +41,9 @@ ftp.informatica  IN      A       192.168.8.190
 smtp.informatica IN      A       192.168.8.190
 ```
 
-> **Nota:** Al escribir `www.informatica` sin punto al final, BIND lo completa automáticamente como `www.informatica.marisma.intranet`.
->
-> **Importante:** Incrementa el Serial antes de guardar (ej: de `2024052001` a `2024052002`).
 
-![Zona con subdominio virtual](capturas/actividad8/zona_virtual.png)
+<img width="1302" height="528" alt="image" src="https://github.com/user-attachments/assets/62c81233-ef13-4916-96da-3e8357ba1168" />
+
 
 ## 2. Comprobar y reiniciar
 
@@ -56,7 +54,8 @@ sudo systemctl restart bind9
 sudo systemctl status bind9 --no-pager -l | head -10
 ```
 
-![Checkconf subdominio virtual](capturas/actividad8/checkconf_virtual.png)
+<img width="1040" height="395" alt="image" src="https://github.com/user-attachments/assets/50893276-95f0-4c3b-b1ae-67d25489e04d" />
+
 
 ## 3. Configuración del cliente
 
@@ -77,7 +76,8 @@ dig ftp.informatica.marisma.intranet
 dig smtp.informatica.marisma.intranet
 ```
 
-![Hosts subdominio](capturas/actividad8/dig_hosts_sub.png)
+<img width="1037" height="1280" alt="image" src="https://github.com/user-attachments/assets/2714d9e1-663f-471b-8ab5-2b8fcce3ccaf" />
+
 
 ### 4.2 Probar que el dominio principal sigue funcionando
 
@@ -86,7 +86,8 @@ dig www.marisma.intranet
 dig marisma.intranet MX
 ```
 
-![Dominio principal](capturas/actividad8/dig_principal.png)
+<img width="729" height="953" alt="image" src="https://github.com/user-attachments/assets/4385241e-9aef-441f-b7fb-1bba48c340a2" />
+
 
 ## 5. Opcional: Script para crear subdominios con $INCLUDE
 
@@ -97,7 +98,6 @@ Creamos el script:
 ```bash
 #!/bin/bash
 
-# crear_subdominio.sh - Crea un subdominio virtual usando $INCLUDE
 
 if [ -z "$1" ]; then
     echo "Uso: $0 nombre_subdominio"
@@ -133,7 +133,8 @@ sudo chmod +x crear_subdominio.sh
 sudo bash crear_subdominio.sh pruebas
 ```
 
-![Script bash](capturas/actividad8/script_bash.png)
+<img width="1037" height="261" alt="image" src="https://github.com/user-attachments/assets/f4b953d9-7365-410f-9ce5-ee429a1cd184" />
+
 
 ### 5.2 Verificar el include
 
@@ -142,25 +143,15 @@ cat /etc/bind/db.pruebas.marisma.intranet.hosts
 cat /etc/bind/db.marisma.intranet | grep INCLUDE
 ```
 
-![Verificar include](capturas/actividad8/verificar_include.png)
+<img width="1007" height="239" alt="image" src="https://github.com/user-attachments/assets/97c94bd8-ae94-4bd5-9718-5ee014e83776" />
+
 
 ### 5.3 Comprobar desde el cliente
 
 ```bash
 dig www.pruebas.marisma.intranet
 ```
+<img width="685" height="510" alt="image" src="https://github.com/user-attachments/assets/41fdc477-b891-4e36-aabd-58ba474a1008" />
 
 ---
 
-**Comandos resumen para capturas:**
-
-| Captura | Comando |
-|---------|---------|
-| Editar zona principal | `sudo nano /etc/bind/db.marisma.intranet` |
-| Checkconf | `sudo named-checkconf` |
-| Check zona | `sudo named-checkzone marisma.intranet /etc/bind/db.marisma.intranet` |
-| Consulta www subdominio | `dig www.informatica.marisma.intranet` |
-| Consulta ftp subdominio | `dig ftp.informatica.marisma.intranet` |
-| Consulta smtp subdominio | `dig smtp.informatica.marisma.intranet` |
-| Script bash | `sudo bash crear_subdominio.sh nombre` |
-| Verificar include | `cat /etc/bind/db.marisma.intranet \| grep INCLUDE` |
