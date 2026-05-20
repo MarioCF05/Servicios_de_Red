@@ -118,7 +118,8 @@ sudo ufw allow Bind9
 sudo ufw reload
 ```
 
-![Firewall allow Bind9](capturas/actividad5/ufw_allow.png)
+<img width="1717" height="185" alt="image" src="https://github.com/user-attachments/assets/8392bfa9-32ad-43be-b802-e0fcbb5a9602" />
+
 
 ## 4. Configuración del cliente
 
@@ -134,7 +135,8 @@ Añadimos:
 nameserver 192.168.X.XX
 ```
 
-![resolv.conf cliente](capturas/actividad5/resolv_conf.png)
+<img width="1211" height="726" alt="image" src="https://github.com/user-attachments/assets/a2a4651f-ea28-42eb-bd4e-b7e0179b4b37" />
+
 
 > **Nota persistente:** Si el sistema sobreescribe resolv.conf, instala `resolvconf`:
 > ```bash
@@ -151,7 +153,8 @@ ping -c 4 google.com
 ping -c 4 8.8.8.8
 ```
 
-![Ping a google.com](capturas/actividad5/ping_google.png)
+<img width="1276" height="499" alt="image" src="https://github.com/user-attachments/assets/7a7cd937-1050-45bc-8bcd-710708765145" />
+
 
 ### 5.2 nslookup
 
@@ -160,7 +163,8 @@ nslookup google.com
 nslookup 8.8.8.8
 ```
 
-![nslookup google](capturas/actividad5/nslookup_google.png)
+<img width="1281" height="495" alt="image" src="https://github.com/user-attachments/assets/bd390d65-a894-46d1-9c1a-d3f378ba7bde" />
+
 
 ### 5.3 dig
 
@@ -169,7 +173,8 @@ dig google.com
 dig -x 8.8.8.8
 ```
 
-![dig google](capturas/actividad5/dig_google.png)
+<img width="946" height="638" alt="image" src="https://github.com/user-attachments/assets/ac76b84b-6927-4e25-9234-89422301ed13" />
+
 
 ### 5.4 Logs del servidor
 
@@ -177,6 +182,7 @@ dig -x 8.8.8.8
 sudo tail -f /var/log/syslog | grep named
 ```
 
-![Logs del servidor DNS](capturas/actividad5/logs_named.png)
+<img width="1715" height="363" alt="image" src="https://github.com/user-attachments/assets/29fe977d-ab3a-438f-b116-ebf847ec9115" />
+
 
 ---
