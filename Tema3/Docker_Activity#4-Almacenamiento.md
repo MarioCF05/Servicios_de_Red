@@ -53,7 +53,7 @@ docker run -d -p 80:5000 \
 
 ### Acceder a la aplicación
 
-Abre el navegador y visita `http://localhost`. Deberías ver la aplicación Guestbook. Prueba a añadir algún mensaje.
+Abre el navegador y visita `http://192.168.8.190`. Deberías ver la aplicación Guestbook. Prueba a añadir algún mensaje.
 
 <img width="1717" height="667" alt="image" src="https://github.com/user-attachments/assets/cb847381-226c-44f5-bb7c-948618999c39" />
 
@@ -116,7 +116,7 @@ docker run -d -p 80:3000 \
 
 ### Acceder a la aplicación
 
-Abre el navegador y visita `http://localhost`. Deberías ver el buscador de municipios.
+Abre el navegador y visita `http://192.168.8.190`. Deberías ver el buscador de municipios.
 
 <img width="1718" height="712" alt="image" src="https://github.com/user-attachments/assets/bb54b0bb-83de-4fb4-afb7-431ab39fdeaa" />
 
@@ -182,7 +182,7 @@ docker ps
 
 ### Acceder a WordPress
 
-Abre el navegador y visita `http://localhost`. Deberías ver el instalador de WordPress. Como ya pasamos las variables de entorno, la configuración de la base de datos ya está hecha automáticamente.
+Abre el navegador y visita `http://192.168.8.190`. Deberías ver el instalador de WordPress. Como ya pasamos las variables de entorno, la configuración de la base de datos ya está hecha automáticamente.
 
 <img width="1714" height="141" alt="image" src="https://github.com/user-attachments/assets/85245d6c-afbe-4f72-934e-4dfd746a7627" />
 
