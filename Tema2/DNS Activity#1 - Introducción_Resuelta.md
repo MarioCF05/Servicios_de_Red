@@ -71,7 +71,6 @@ Aquí está el truco: aunque solo haya 13 nombres, **hay cientos de servidores f
 | L | ICANN | Anycast |
 | M | Proyecto WIDE (Japón) | Anycast |
 
-> **Dato curioso:** En Paraguay hay copias de los servidores I y L. Sí, en Paraguay. El mundo es un pañuelo.
 
 ### ¿Qué es anycast?
 
