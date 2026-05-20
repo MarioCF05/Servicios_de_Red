@@ -21,7 +21,8 @@ Aprender a descargar imágenes Docker, ejecutar contenedores con nombre propio, 
 docker pull ubuntu
 ```
 
-> *Captura de pantalla aquí*
+<img width="1715" height="268" alt="image" src="https://github.com/user-attachments/assets/bbb27f80-d982-4671-bb99-45a356b7634e" />
+
 
 ---
 
@@ -31,7 +32,8 @@ docker pull ubuntu
 docker pull hello-world
 ```
 
-> *Captura de pantalla aquí*
+<img width="1716" height="242" alt="image" src="https://github.com/user-attachments/assets/99e81791-6aa1-4644-a33f-4366845ef659" />
+
 
 ---
 
@@ -41,7 +43,8 @@ docker pull hello-world
 docker pull nginx
 ```
 
-> *Captura de pantalla aquí*
+<img width="1718" height="361" alt="image" src="https://github.com/user-attachments/assets/b4632081-d289-4439-906b-c0711a3b0155" />
+
 
 ---
 
@@ -51,7 +54,8 @@ docker pull nginx
 docker images
 ```
 
-> *Captura de pantalla aquí*
+<img width="1720" height="197" alt="image" src="https://github.com/user-attachments/assets/f65e1aad-1e98-4e30-8064-6f233ef6630c" />
+
 
 ---
 
@@ -61,7 +65,8 @@ docker images
 docker run --name myhello1 hello-world
 ```
 
-> *Captura de pantalla aquí*
+<img width="1715" height="526" alt="image" src="https://github.com/user-attachments/assets/b15e126b-059d-4082-8f89-29defa8e63dd" />
+
 
 ---
 
@@ -71,7 +76,8 @@ docker run --name myhello1 hello-world
 docker run --name myhello2 hello-world
 ```
 
-> *Captura de pantalla aquí*
+<img width="1717" height="531" alt="image" src="https://github.com/user-attachments/assets/1c6571bc-6940-4027-836f-58efddaac49f" />
+
 
 ---
 
@@ -81,19 +87,18 @@ docker run --name myhello2 hello-world
 docker run --name myhello3 hello-world
 ```
 
-> *Captura de pantalla aquí*
+<img width="1718" height="538" alt="image" src="https://github.com/user-attachments/assets/94af5ac5-126e-4ce2-ade3-ab7aa25d0834" />
+
 
 ---
 
 ### 8. Muestra los contenedores que se están ejecutando
 
 ```bash
-docker ps
+docker ps -a
 ```
 
-> *Captura de pantalla aquí*
-
-> **Nota:** Los contenedores `hello-world` se ejecutan y se detienen automáticamente al finalizar. Es normal que `docker ps` (sin `-a`) no muestre ninguno. Si quieres ver todos (incluidos los detenidos), usa `docker ps -a`.
+<img width="1718" height="185" alt="image" src="https://github.com/user-attachments/assets/f172e1ad-4383-43d1-8728-26338f169e60" />
 
 ---
 
@@ -103,7 +108,8 @@ docker ps
 docker stop myhello1
 ```
 
-> *Captura de pantalla aquí*
+<img width="1721" height="198" alt="image" src="https://github.com/user-attachments/assets/f75d7d66-d709-4ce8-8bd4-e9b6c14a9dd9" />
+
 
 ---
 
@@ -113,7 +119,8 @@ docker stop myhello1
 docker stop myhello2
 ```
 
-> *Captura de pantalla aquí*
+<img width="1718" height="164" alt="image" src="https://github.com/user-attachments/assets/8fec034e-48ae-4fc9-9f8e-96f650d9e639" />
+
 
 ---
 
@@ -123,19 +130,19 @@ docker stop myhello2
 docker rm myhello1
 ```
 
-> *Captura de pantalla aquí*
+<img width="1721" height="161" alt="image" src="https://github.com/user-attachments/assets/f45b3309-20fc-4848-9175-0924666a5828" />
+
 
 ---
 
 ### 12. Muestra los contenedores que se están ejecutando
 
 ```bash
-docker ps
+docker ps -a
 ```
 
-> *Captura de pantalla aquí*
+<img width="1719" height="178" alt="image" src="https://github.com/user-attachments/assets/8a83d088-c693-4873-9cbf-2e87df6a35fe" />
 
-> Puedes comprobar también con `docker ps -a` para ver que `myhello1` ya no aparece en la lista.
 
 ---
 
@@ -152,7 +159,9 @@ docker rm $(docker ps -aq)
 > docker rm $(docker ps -aq)
 > ```
 
-> *Captura de pantalla aquí*
+<img width="1719" height="178" alt="image" src="https://github.com/user-attachments/assets/6a00f18b-c03a-4489-ad7b-c992a8b98963" />
+
+<img width="1718" height="150" alt="image" src="https://github.com/user-attachments/assets/929b8745-a316-4ed5-bd2a-1285754d4cc4" />
 
 ---
 
