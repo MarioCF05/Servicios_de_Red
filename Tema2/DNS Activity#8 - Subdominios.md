@@ -295,20 +295,3 @@ dig ftp.pruebas.iesmarisma.intranet
 ```
 
 ---
-
-**Comandos resumen para capturas:**
-
-| Captura | Comando |
-|---------|---------|
-| Zona dominio principal | `sudo nano /etc/bind/db.iesmarisma.intranet` |
-| named.conf.local | `sudo nano /etc/bind/named.conf.local` |
-| Zona subdominio | `sudo nano /etc/bind/db.informatica.iesmarisma.intranet` |
-| Checkconf global | `sudo named-checkconf` |
-| Check zona principal | `sudo named-checkzone iesmarisma.intranet /etc/bind/db.iesmarisma.intranet` |
-| Check subdominio | `sudo named-checkzone informatica.iesmarisma.intranet /etc/bind/db.informatica.iesmarisma.intranet` |
-| Consulta NS subdominio | `dig informatica.iesmarisma.intranet NS` |
-| Consulta www subdominio | `dig www.informatica.iesmarisma.intranet` |
-| Consulta ftp subdominio | `dig ftp.informatica.iesmarisma.intranet` |
-| Consulta smtp subdominio | `dig smtp.informatica.iesmarisma.intranet` |
-| Script bash | `sudo bash crear_subdominio.sh nombre` |
-| Verificar include | `cat /etc/bind/db.iesmarisma.intranet \| grep INCLUDE` |
