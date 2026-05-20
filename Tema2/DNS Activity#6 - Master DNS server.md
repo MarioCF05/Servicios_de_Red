@@ -240,20 +240,3 @@ nslookup www.marisma.intranet
 ![Ping y nslookup](capturas/actividad6/ping_nslookup.png)
 
 ---
-
-**Comandos resumen para capturas:**
-
-| Captura | Comando |
-|---------|---------|
-| named.conf.local | `sudo nano /etc/bind/named.conf.local` |
-| Zona directa | `sudo nano /etc/bind/db.marisma.intranet` |
-| Zona inversa | `sudo nano /etc/bind/db.192.168.X` |
-| Comprobar sintaxis global | `sudo named-checkconf` |
-| Comprobar zona directa | `sudo named-checkzone marisma.intranet /etc/bind/db.marisma.intranet` |
-| Comprobar zona inversa | `sudo named-checkzone X.168.192.in-addr.arpa /etc/bind/db.192.168.X` |
-| Estado del servicio | `sudo systemctl status bind9` |
-| Consulta SOA | `dig marisma.intranet SOA` |
-| Consulta NS | `dig marisma.intranet NS` |
-| Consulta MX | `dig marisma.intranet MX` |
-| Consulta A | `dig www.marisma.intranet` |
-| Resolución inversa | `dig -x 192.168.X.27` |
