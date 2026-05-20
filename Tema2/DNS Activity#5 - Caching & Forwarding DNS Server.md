@@ -132,7 +132,7 @@ sudo nano /etc/resolv.conf
 Añadimos:
 
 ```
-nameserver 192.168.X.XX
+nameserver 192.168.8.190
 ```
 
 <img width="1211" height="726" alt="image" src="https://github.com/user-attachments/assets/a2a4651f-ea28-42eb-bd4e-b7e0179b4b37" />
