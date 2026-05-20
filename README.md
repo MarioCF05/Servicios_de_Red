@@ -1,52 +1,29 @@
-# Servicios_de_Red
-[Activity 0](Actividades/Actividad_de_Presentación.md)
+# Servicios de Red
 
+## Actividades
 
-<br>
+- [Activity 0](Actividades/Actividad_de_Presentación.md)
+- [Activity 1](Actividades/Activity1.md)
+- [Activity 2](Actividades/Activity2.md)
+- [Activity 5](Actividades/Activity5.md)
+- [Activity 7](Actividades/Activity7.md)
+- [Activity 8](Actividades/Activity8.md)
+- [Activity 9](Actividades/Activity9.md)
+- [Activity 10](Actividades/Activity10.md)
 
-[Activity 1](Actividades/Activity1.md)
+## Trabajos
 
-<br>
+- [Trabajo Trimestral](Trabajo_Trimestral/Practica_Primer_Trimestre.md)
+- [Práctica 2 Trimestre](Practica_2_Trimestre/Practica_2_trimestre.md)
 
-[Activity 2](Actividades/Activity2.md)
+## AWS
 
-<br>
+- [S5. Instalación Wordpress en AWS](ActividadesAWS/Wordpress_en_Instancia_EC2.md)
 
-[Activity 5](Actividades/Activity5.md)
+## Tema 2
 
-<br>
+- [Actividades Tema 2](Tema2)
 
-[Activity 7](Actividades/Activity7.md)
+## Tema 3
 
-<br>
-
-[Activity 8](Actividades/Activity8.md)
-
-<br>
-
-[Activity 9](Actividades/Activity9.md)
-
-<br>
-
-[Activity 10](Actividades/Activity10.md)
-
-<br>
-
-[Trabajo Trimestral](Trabajo_Trimestral/Practica_Primer_Trimestre.md)
-
-<br>
-
-[S5. Instalación Wordpress en AWS](ActividadesAWS/Wordpress_en_Instancia_EC2.md)
-
-<br>
-
-[Practica 2 Trimestre](Practica_2_Trimestre/Practica_2_trimestre.md)
-
-<br>
-
-[Actividades_Tema_2](Tema2)
-
-<br>
-
-[Actividades_Tema_2](Tema3)
-
+- [Actividades Tema 3](Tema3)
