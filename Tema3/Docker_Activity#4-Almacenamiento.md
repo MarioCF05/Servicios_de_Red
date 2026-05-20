@@ -184,18 +184,32 @@ docker ps
 
 Abre el navegador y visita `http://localhost`. Deberías ver el instalador de WordPress. Como ya pasamos las variables de entorno, la configuración de la base de datos ya está hecha automáticamente.
 
+<img width="1714" height="141" alt="image" src="https://github.com/user-attachments/assets/85245d6c-afbe-4f72-934e-4dfd746a7627" />
+
+
 <img width="1716" height="872" alt="image" src="https://github.com/user-attachments/assets/d50668e3-b29e-4f08-84b0-e249d3c048d9" />
+<img width="1720" height="1031" alt="image" src="https://github.com/user-attachments/assets/05ed9f86-5c94-4a0b-b3de-280b6e65d76e" />
+<img width="1717" height="711" alt="image" src="https://github.com/user-attachments/assets/30f3f9d6-8d90-4a9a-bdf9-e32908fe6627" />
+
 
 
 ### Probar la persistencia
 
 Para comprobar que los datos sobreviven a la eliminación de contenedores:
+<img width="1714" height="1042" alt="image" src="https://github.com/user-attachments/assets/71cb3fb2-f59c-43ca-b846-5a1136717e54" />
+
 
 ```bash
 docker stop servidor_mysql servidor_wp
 docker rm servidor_mysql servidor_wp
+```
+
+<img width="1713" height="549" alt="image" src="https://github.com/user-attachments/assets/1977c244-c1e8-4e59-87ae-84b87ed26f0a" />
+
+
 
 # Vuelve a crear los contenedores con los mismos volúmenes
+```bash
 docker run -d --name servidor_mysql \
   --network red_wp \
   -v /opt/mysql_wp:/var/lib/mysql \
@@ -218,7 +232,10 @@ docker run -d --name servidor_wp \
 
 Los datos deberían seguir ahí porque los volúmenes `/opt/mysql_wp` y `/opt/wordpress` están en el host.
 
-> *Captura de pantalla aquí*
+<img width="1713" height="722" alt="image" src="https://github.com/user-attachments/assets/537db656-d46e-468a-9469-ad9095c97ebe" />
+
+<img width="1717" height="1215" alt="image" src="https://github.com/user-attachments/assets/75c1efa2-5252-4972-acf4-97d608b63973" />
+
 
 ---
 
@@ -232,7 +249,8 @@ docker rm $(docker ps -aq)
 docker network rm red_guestbook red_temperaturas red_wp
 ```
 
-> *Captura de pantalla aquí*
+<img width="1716" height="359" alt="image" src="https://github.com/user-attachments/assets/f3c3c924-7e1b-43ae-aa09-35cc57de9103" />
+
 
 ---
 
