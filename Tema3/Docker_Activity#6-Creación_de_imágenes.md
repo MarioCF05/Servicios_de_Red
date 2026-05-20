@@ -378,14 +378,3 @@ docker rmi mario/ejemplo1:v1 mario/ejemplo1:v2 mario/ejemplo1:v3 \
 
 ---
 
-## Mapa de puertos usado
-
-| Contenedor | Puerto host |
-|---|---|
-| ejemplo1 (Apache) | 8080 |
-| ejemplo1-v2 (httpd) | 8081 |
-| ejemplo1-v3 (nginx) | 8082 |
-| ejemplo2 (PHP Ubuntu) | 8083 |
-| ejemplo2-v2 (PHP oficial) | 8084 |
-| ejemplo3-v1 (Flask Ubuntu) | 8085 |
-| ejemplo3-v2 (Flask oficial) | 8086 |
