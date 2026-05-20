@@ -33,7 +33,8 @@ acl goodclients {
 };
 ```
 
-![ACL en named.conf.options](capturas/actividad5/acl.png)
+<img width="1717" height="718" alt="image" src="https://github.com/user-attachments/assets/1118da7b-e6bb-4b0b-a272-053db393fb8f" />
+
 
 ### 2.2 Configurar opciones de caché
 
