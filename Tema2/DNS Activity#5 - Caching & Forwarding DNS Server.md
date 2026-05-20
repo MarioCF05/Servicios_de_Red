@@ -171,19 +171,3 @@ sudo tail -f /var/log/syslog | grep named
 ![Logs del servidor DNS](capturas/actividad5/logs_named.png)
 
 ---
-
-**Comandos resumen para capturas:**
-
-| Captura | Comando |
-|---------|---------|
-| Instalación | `sudo apt install bind9 bind9utils bind9-doc -y` |
-| ACL + configuración | `sudo nano /etc/bind/named.conf.options` |
-| Comprobar sintaxis | `sudo named-checkconf` |
-| Estado del servicio | `sudo systemctl status bind9` |
-| Puerto 53 | `sudo ss -tulpn \| grep :53` |
-| Firewall | `sudo ufw allow Bind9` |
-| resolv.conf cliente | `sudo nano /etc/resolv.conf` |
-| Ping cliente | `ping -c 4 google.com` |
-| nslookup cliente | `nslookup google.com` |
-| dig cliente | `dig google.com` |
-| Logs servidor | `sudo tail -f /var/log/syslog \| grep named` |
