@@ -8,8 +8,10 @@ Actualizamos los paquetes e instalamos bind9 junto con sus utilidades:
 sudo apt update && sudo apt upgrade -y
 sudo apt install bind9 bind9utils bind9-doc -y
 ```
+<img width="1718" height="194" alt="image" src="https://github.com/user-attachments/assets/d27fd1a3-5363-4abd-ab08-d5a29484a306" />
 
-![Instalación de bind9](capturas/actividad5/instalacion_bind9.png)
+<img width="1718" height="503" alt="image" src="https://github.com/user-attachments/assets/493ef66c-36bf-462e-8553-269ce23fea5e" />
+
 
 ## 2. Configuración como servidor caché
 
