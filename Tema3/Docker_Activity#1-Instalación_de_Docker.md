@@ -29,7 +29,8 @@ Instalar Docker Engine en Ubuntu y documentar el proceso en el repositorio de Gi
    sudo apt upgrade -y
    ```
 
-   > *Captura de pantalla aquí*
+<img width="1272" height="458" alt="image" src="https://github.com/user-attachments/assets/e69eee52-49fa-40d1-9203-e6e2a4982fab" />
+
 
 2. **Instalar dependencias necesarias**
 
@@ -37,7 +38,8 @@ Instalar Docker Engine en Ubuntu y documentar el proceso en el repositorio de Gi
    sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
    ```
 
-   > *Captura de pantalla aquí*
+ <img width="1268" height="475" alt="image" src="https://github.com/user-attachments/assets/d9f0d40a-2c55-449b-a8f4-bfd2e067b3da" />
+
 
 3. **Agregar la clave GPG oficial de Docker**
 
@@ -45,7 +47,8 @@ Instalar Docker Engine en Ubuntu y documentar el proceso en el repositorio de Gi
    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
    ```
 
-   > *Captura de pantalla aquí*
+<img width="1717" height="104" alt="image" src="https://github.com/user-attachments/assets/33493411-ef32-4a7f-9b47-98a412955706" />
+
 
 4. **Agregar el repositorio oficial de Docker**
 
@@ -53,7 +56,8 @@ Instalar Docker Engine en Ubuntu y documentar el proceso en el repositorio de Gi
    echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
    ```
 
-   > *Captura de pantalla aquí*
+<img width="1718" height="105" alt="image" src="https://github.com/user-attachments/assets/cd4de57e-89a0-480b-9eae-699bf44aedfe" />
+
 
 5. **Instalar Docker Engine**
 
@@ -62,7 +66,8 @@ Instalar Docker Engine en Ubuntu y documentar el proceso en el repositorio de Gi
    sudo apt install docker-ce docker-ce-cli containerd.io -y
    ```
 
-   > *Captura de pantalla aquí*
+<img width="1425" height="641" alt="image" src="https://github.com/user-attachments/assets/6f241d65-d47d-477f-8e73-f5d2e523ff61" />
+
 
 6. **Verificar que Docker está instalado correctamente**
 
@@ -70,27 +75,8 @@ Instalar Docker Engine en Ubuntu y documentar el proceso en el repositorio de Gi
    sudo systemctl status docker
    ```
 
-   > *Captura de pantalla aquí*
+<img width="1716" height="499" alt="image" src="https://github.com/user-attachments/assets/8aa5d608-1ff6-4e7c-85ce-80920726a905" />
 
-7. **(Opcional) Ejecutar el contenedor de prueba "Hello World"**
-
-   ```bash
-   sudo docker run hello-world
-   ```
-
-   > *Captura de pantalla aquí*
-
-8. **(Opcional) Agregar tu usuario al grupo `docker` para evitar usar `sudo`**
-
-   ```bash
-   sudo usermod -aG docker $USER
-   ```
-
-   > Tras ejecutarlo, cierra sesión y vuelve a iniciarla para que el cambio surta efecto.
-
-   > *Captura de pantalla aquí*
-
----
 
 ## Verificación final
 
@@ -101,20 +87,8 @@ docker --version
 docker info
 ```
 
-> *Captura de pantalla aquí*
+<img width="1066" height="318" alt="image" src="https://github.com/user-attachments/assets/182b051b-e96a-487c-990b-bc1ddc39a83d" />
+
 
 ---
 
-## Documentación en GitHub
-
-- Crea o utiliza tu repositorio de prácticas.
-- Sube este archivo (o un resumen) con las capturas de pantalla integradas.
-- Asegúrate de incluir los comandos utilizados y una breve explicación de cada paso.
-
----
-
-## Notas adicionales
-
-- Si usas una máquina virtual en Windows/Mac, asegúrate de tener activada la virtualización anidada.
-- Docker Desktop para Windows/Mac también es una alternativa, pero esta práctica se centra en Ubuntu nativo.
-- En caso de errores de permisos, revisa que tu usuario pertenezca al grupo `docker`.
