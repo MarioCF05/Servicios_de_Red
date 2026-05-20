@@ -22,7 +22,8 @@ sudo apt install docker-ce docker-ce-cli containerd.io -y
 sudo systemctl status docker
 ```
 
-> *Captura de pantalla aquí*
+<img width="1718" height="663" alt="image" src="https://github.com/user-attachments/assets/d26adb60-5441-494c-acfc-2f4f28dd1dca" />
+
 
 ---
 
@@ -36,7 +37,8 @@ docker run hello-world
 
 Este comando descarga la imagen `hello-world` (si no la tienes), crea un contenedor, ejecuta el mensaje de bienvenida y se detiene.
 
-> *Captura de pantalla aquí*
+<img width="1718" height="547" alt="image" src="https://github.com/user-attachments/assets/3f69e671-9da8-4c81-a982-c64873964cad" />
+
 
 ---
 
@@ -56,7 +58,8 @@ docker run ubuntu echo "Hola desde Docker"
 docker run ubuntu ls -la
 ```
 
-> *Captura de pantalla aquí*
+<img width="818" height="837" alt="image" src="https://github.com/user-attachments/assets/9de95eee-1c89-4d95-b6f5-94eddafeda29" />
+
 
 ---
 
@@ -74,7 +77,8 @@ Dentro del contenedor puedes ejecutar comandos como si fuese una máquina Ubuntu
 exit
 ```
 
-> *Captura de pantalla aquí (dentro y fuera del contenedor)*
+<img width="1010" height="220" alt="image" src="https://github.com/user-attachments/assets/a883093d-5590-4def-bdcb-d3c1940c24d0" />
+
 
 ---
 
@@ -98,7 +102,8 @@ Para el contenedor demonio:
 docker stop mydaemon
 ```
 
-> *Captura de pantalla aquí*
+<img width="1096" height="283" alt="image" src="https://github.com/user-attachments/assets/6b9dec73-f3e6-4897-8004-5e646676d3a4" />
+
 
 ---
 
@@ -110,13 +115,22 @@ Ejecuta Nginx en un contenedor y expón el puerto 80 del contenedor en tu máqui
 docker run -d --name mynginx -p 8080:80 nginx
 ```
 
+<img width="1206" height="189" alt="image" src="https://github.com/user-attachments/assets/007f559b-a25e-4ec3-907e-a418c00c7e47" />
+
+
 Abre el navegador y visita `http://localhost:8080`. Deberías ver la página de bienvenida de Nginx.
+
+<img width="1716" height="510" alt="image" src="https://github.com/user-attachments/assets/40f68b4e-5e51-4ea4-8a63-c1e06d65fd84" />
+
 
 Para ver los logs del servidor:
 
 ```bash
 docker logs mynginx
 ```
+
+<img width="1715" height="656" alt="image" src="https://github.com/user-attachments/assets/1bed4f1d-2634-4df0-b8f3-bf7ec8ade675" />
+
 
 Para detener y eliminar:
 
@@ -125,7 +139,8 @@ docker stop mynginx
 docker rm mynginx
 ```
 
-> *Captura de pantalla aquí (navegador mostrando localhost:8080 y terminal)*
+<img width="1718" height="196" alt="image" src="https://github.com/user-attachments/assets/50b9aa0e-f5f3-4044-9d02-770bb3c365ab" />
+
 
 ---
 
@@ -143,6 +158,9 @@ Dentro del contenedor, comprueba que la variable existe:
 echo $NOMBRE
 ```
 
+<img width="1716" height="185" alt="image" src="https://github.com/user-attachments/assets/90950d05-4f35-46d1-b786-ffac2beab9f3" />
+
+
 También puedes probar con la imagen oficial de MySQL, que usa variables de entorno para configurarla:
 
 ```bash
@@ -155,7 +173,8 @@ Verifica que el contenedor está corriendo:
 docker ps
 ```
 
-> *Captura de pantalla aquí*
+<img width="1718" height="514" alt="image" src="https://github.com/user-attachments/assets/42452ca5-8598-46d5-8d80-fda4bc071dc3" />
+
 
 ---
 
@@ -168,7 +187,9 @@ docker stop $(docker ps -q)
 docker rm $(docker ps -aq)
 ```
 
-> *Captura de pantalla aquí*
+<img width="1717" height="414" alt="image" src="https://github.com/user-attachments/assets/b0a124f5-5a24-4607-84de-e032502d8d89" />
+
+
 
 ---
 
