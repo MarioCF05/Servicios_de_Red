@@ -20,7 +20,8 @@ options {
 };
 ```
 
-![named.conf.options](capturas/actividad6/options.png)
+<img width="1128" height="517" alt="image" src="https://github.com/user-attachments/assets/6842ec51-37eb-44ea-932e-d218cc3caef7" />
+
 
 ## 2. Definir las zonas en named.conf.local
 
@@ -44,9 +45,8 @@ zone "X.168.192.in-addr.arpa" {
 };
 ```
 
-> **Importante:** Sustituye `X` por el tercer octeto de tu red (ej: 195, 206, 197, etc.)
+<img width="1718" height="352" alt="image" src="https://github.com/user-attachments/assets/e60ddd06-0c00-4647-b0be-19978a48e48f" />
 
-![named.conf.local](capturas/actividad6/named_conf_local.png)
 
 ## 3. Crear archivo de zona directa
 
@@ -91,7 +91,8 @@ departamentos IN    A   192.168.X.27
 ftp1    IN      A       192.168.X.27
 ```
 
-![Zona directa](capturas/actividad6/zona_directa.png)
+<img width="1145" height="701" alt="image" src="https://github.com/user-attachments/assets/fb6c2c50-1a49-492e-b746-726124fb55f0" />
+
 
 ### FQDN definidos en la zona:
 
@@ -135,7 +136,8 @@ $TTL    604800
 27      IN      PTR     departamentos.marisma.intranet.
 ```
 
-![Zona inversa](capturas/actividad6/zona_inversa.png)
+<img width="1160" height="424" alt="image" src="https://github.com/user-attachments/assets/d98c2d00-84fb-44cf-a0bd-4433f6e93e9a" />
+
 
 ## 5. Comprobar sintaxis
 
@@ -145,7 +147,8 @@ sudo named-checkzone marisma.intranet /etc/bind/db.marisma.intranet
 sudo named-checkzone X.168.192.in-addr.arpa /etc/bind/db.192.168.X
 ```
 
-![Comprobación sintaxis](capturas/actividad6/checkconf.png)
+<img width="1717" height="349" alt="image" src="https://github.com/user-attachments/assets/8ac4077c-f67a-4711-8440-086ca5727ee9" />
+
 
 ## 6. Reiniciar servicio
 
@@ -154,7 +157,8 @@ sudo systemctl restart bind9
 sudo systemctl status bind9
 ```
 
-![Restart bind9](capturas/actividad6/restart_bind9.png)
+<img width="1089" height="558" alt="image" src="https://github.com/user-attachments/assets/116c2500-cab5-41a7-8709-59fec44ef393" />
+
 
 ## 7. Configurar el cliente
 
