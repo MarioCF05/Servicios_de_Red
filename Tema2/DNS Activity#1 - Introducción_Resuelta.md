@@ -156,7 +156,7 @@ blog          IN  CNAME  www.ejemplo.com.     ; blog.ejemplo.com igual
 
 ---
 
-> **Referencias (por si el profe pregunta):**
+> **Referencias:**
 > - [How DNS Works (YouTube)](https://www.youtube.com/watch?v=mpQZVYPuDGU)
 > - [An Introduction to DNS Terminology (DigitalOcean)](https://www.digitalocean.com/community/tutorials/an-introduction-to-dns-terminology-components-and-concepts) 
 > - [Wikipedia: Top-level domain](https://es.wikipedia.org/wiki/Dominio_de_nivel_superior)
