@@ -27,7 +27,7 @@ Encima del bloque `options{}`, añadimos una ACL con las redes que pueden consul
 
 ```
 acl goodclients {
-    192.168.X.0/24;
+    192.168.8.0/24;
     localhost;
     localnets;
 };
