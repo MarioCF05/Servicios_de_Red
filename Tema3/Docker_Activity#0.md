@@ -7,7 +7,7 @@
 Docker es una herramienta de contenerización que permite empaquetar aplicaciones con todo lo que necesitan para ejecutarse (código, librerías, configuraciones) en unidades llamadas **contenedores**.
 
 **¿Por qué Docker y no una máquina virtual?**  
-Una MV se lleva su propio sistema operativo invitado —ocupa GB y tarda minutos en arrancar—. Un contenedor comparte el kernel del host y arranca en segundos, ocupando MB. Es como la diferencia entre alquilar un piso entero (MV) o usar una taquilla en un gimnasio (contenedor): haces lo que necesitas sin pagar espacio muerto.
+Una VM se lleva su propio sistema operativo invitado —ocupa GB y tarda minutos en arrancar—. Un contenedor comparte el kernel del host y arranca en segundos, ocupando MB. Es como la diferencia entre alquilar un piso entero (VM) o usar una taquilla en un gimnasio (contenedor): haces lo que necesitas sin pagar espacio muerto.
 
 **Arquitectura básica:**
 - **Docker daemon (`dockerd`)**: el cerebro que gestiona contenedores, imágenes y redes.
