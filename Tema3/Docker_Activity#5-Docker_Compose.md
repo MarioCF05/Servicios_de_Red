@@ -90,6 +90,9 @@ docker compose down -v
 
 ### Crear el fichero `docker-compose.yaml`
 
+<img width="1716" height="141" alt="image" src="https://github.com/user-attachments/assets/b57e65d5-0e07-45ca-a42b-19305f2e466c" />
+
+
 ```yaml
 version: '3.1'
 services:
@@ -118,7 +121,8 @@ services:
 docker compose up -d
 ```
 
-> *Captura de pantalla aquí*
+<img width="1716" height="220" alt="image" src="https://github.com/user-attachments/assets/68abee49-7af8-4ef1-ae6c-441652ccd38c" />
+
 
 ### Listar los contenedores
 
@@ -126,13 +130,15 @@ docker compose up -d
 docker compose ps
 ```
 
-> *Captura de pantalla aquí*
+<img width="1718" height="189" alt="image" src="https://github.com/user-attachments/assets/e7670a5d-73b8-4ceb-9e47-182bc97a5802" />
+
 
 ### Acceder a la aplicación
 
 Abre el navegador en `http://localhost:8081`. Deberías ver el buscador de municipios.
 
-> *Captura de pantalla aquí (navegador)*
+<img width="1717" height="663" alt="image" src="https://github.com/user-attachments/assets/48315991-f881-41bb-838e-34b903b64706" />
+
 
 ### Eliminar el escenario
 
@@ -140,13 +146,14 @@ Abre el navegador en `http://localhost:8081`. Deberías ver el buscador de munic
 docker compose down
 ```
 
-> *Captura de pantalla aquí*
+<img width="1717" height="194" alt="image" src="https://github.com/user-attachments/assets/f5b1d5df-3d28-4f1b-bb67-585ebbb02247" />
 
-> **Nota:** Esta aplicación no necesita volúmenes porque es **stateless**. Observa también el uso de `depends_on` para indicar que el frontend depende del backend.
 
 ---
 
 ## Ejemplo 3: Despliegue de WordPress + MariaDB con Docker Compose
+<img width="1716" height="159" alt="image" src="https://github.com/user-attachments/assets/87e90df7-67d5-412a-a020-b765368780c1" />
+
 
 ### Opción A: Con volúmenes Docker
 
@@ -182,7 +189,8 @@ volumes:
   mariadb_data:
 ```
 
-> *Captura de pantalla aquí (contenido del fichero)*
+<img width="1718" height="715" alt="image" src="https://github.com/user-attachments/assets/55287c58-1f0f-4d14-a9e8-6edec4234e47" />
+
 
 ### Opción B: Con bind mount
 
@@ -215,7 +223,8 @@ services:
       - ./mysql:/var/lib/mysql
 ```
 
-> *Captura de pantalla aquí (contenido del fichero)*
+<img width="1718" height="717" alt="image" src="https://github.com/user-attachments/assets/0007d8e8-4e6d-41a1-9656-656c28242bda" />
+
 
 ### Levantar el escenario
 
@@ -223,7 +232,8 @@ services:
 docker compose up -d
 ```
 
-> *Captura de pantalla aquí*
+<img width="1719" height="250" alt="image" src="https://github.com/user-attachments/assets/794609c7-3ece-4423-8890-34299a6d5e92" />
+
 
 ### Listar los contenedores
 
@@ -231,22 +241,25 @@ docker compose up -d
 docker compose ps
 ```
 
-> *Captura de pantalla aquí*
+<img width="1718" height="194" alt="image" src="https://github.com/user-attachments/assets/4e3f6994-92e5-422a-aeff-1a2f6cea94dc" />
+
 
 ### Acceder a WordPress
 
 Abre el navegador en `http://localhost`. Deberías ver la instalación de WordPress (ya configurada con la BD gracias a las variables de entorno).
 
-> *Captura de pantalla aquí (navegador)*
+<img width="1715" height="794" alt="image" src="https://github.com/user-attachments/assets/5ed4c11f-e426-4f99-86ee-d8f00f0031b1" />
+
 
 ### Verificar la base de datos
 
 ```bash
-docker exec servidor_mysql mysql -u root -p -e "SHOW DATABASES;"
+docker exec -it servidor_mysql mariadb -u root -p -e "SHOW DATABASES;"
 ```
 (Contraseña: `asdasd`)
 
-> *Captura de pantalla aquí*
+<img width="1719" height="288" alt="image" src="https://github.com/user-attachments/assets/dd3e34c5-9dec-4072-a587-48c80599acd9" />
+
 
 ### Eliminar el escenario (incluyendo volúmenes)
 
@@ -254,7 +267,8 @@ docker exec servidor_mysql mysql -u root -p -e "SHOW DATABASES;"
 docker compose down -v
 ```
 
-> *Captura de pantalla aquí*
+<img width="1716" height="226" alt="image" src="https://github.com/user-attachments/assets/23ab0296-5fee-468d-bba5-97c5caa322b4" />
+
 
 ---
 
