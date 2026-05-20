@@ -59,23 +59,3 @@ Un contenedor sin volumen es como un **táper de un solo uso** —tiras el tápe
 | Volumes | ✅ Docker lo gestiona | Bases de datos, configuraciones |
 | Bind mounts | ✅ Tú controlas la ruta | Desarrollo, hot-reload |
 
-## Tareas a realizar online
-
-- [ops-stage1](https://training.play-with-docker.com/ops-stage1/) — Primeros pasos interactivos con Docker.
-- [ops-s1-hello](https://training.play-with-docker.com/ops-s1-hello/) — Ejecutar tu primer contenedor "Hello World".
-- [ops-s1-images](https://training.play-with-docker.com/ops-s1-images/) — Gestionar imágenes y contenedores básicos.
-
-> Play-With-Docker te da una terminal online lista para usar, sin necesidad de instalar nada en tu máquina.
-
-## Enlaces de interés
-
-- [Documentación oficial de Docker](https://docs.docker.com/get-started/)
-- [Docker Curriculum — tutorial completo](https://docker-curriculum.com/)
-- [Contenedores vs VMs explicado para mortales (Medium)](https://medium.freecodecamp.org/a-beginner-friendly-introduction-to-containers-vms-and-docker-79a9e3e119b)
-- [Awesome Docker — recursos curados](https://github.com/veggiemonk/awesome-docker)
-- [Labs oficiales para principiantes](https://github.com/docker/labs/tree/master/beginner/)
-
-## CheatSheets
-
-- [CheatSheet oficial de Docker (PDF)](https://www.docker.com/sites/default/files/Docker_CheatSheet_08.09.2016_0.pdf)
-- [wsargent/docker-cheat-sheet (GitHub)](https://github.com/wsargent/docker-cheat-sheet)
