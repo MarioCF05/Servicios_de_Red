@@ -33,7 +33,7 @@ acl goodclients {
 };
 ```
 
-<img width="1717" height="718" alt="image" src="https://github.com/user-attachments/assets/1118da7b-e6bb-4b0b-a272-053db393fb8f" />
+<img width="1718" height="203" alt="image" src="https://github.com/user-attachments/assets/6ebd1949-6fe9-4fe3-97c5-51c0ef32ba5c" />
 
 
 ### 2.2 Configurar opciones de caché
@@ -53,7 +53,10 @@ options {
 };
 ```
 
-![Configuración caché](capturas/actividad5/config_cache.png)
+<img width="1717" height="719" alt="image" src="https://github.com/user-attachments/assets/21c97164-9f48-432d-ade8-ff10e6b9f366" />
+
+
+
 
 ### 2.3 Comprobar sintaxis y reiniciar
 
@@ -63,7 +66,8 @@ sudo systemctl restart bind9
 sudo systemctl status bind9
 ```
 
-![Comprobación sintaxis caché](capturas/actividad5/checkconf_cache.png)
+<img width="1715" height="721" alt="image" src="https://github.com/user-attachments/assets/2c02b426-70f3-4a91-a120-2fe9e945d8e1" />
+
 
 ### 2.4 Verificar que escucha en puerto 53
 
@@ -71,7 +75,8 @@ sudo systemctl status bind9
 sudo ss -tulpn | grep :53
 ```
 
-![Puerto 53 escuchando](capturas/actividad5/ss_port53.png)
+<img width="1717" height="753" alt="image" src="https://github.com/user-attachments/assets/7f2664c9-9910-4310-a7bf-cf75d3d2ca0a" />
+
 
 ## 3. Configuración como servidor forwarding
 
@@ -98,7 +103,8 @@ options {
 
 > **Nota:** Si `named-checkconf` da error con `dnssec-enable`, elimina esa línea porque es obsoleta en versiones recientes de BIND.
 
-![Configuración forwarding](capturas/actividad5/config_forward.png)
+<img width="1718" height="717" alt="image" src="https://github.com/user-attachments/assets/1c2ee1b2-556f-476b-8381-40dc7c2e6a3e" />
+
 
 ```bash
 sudo named-checkconf
