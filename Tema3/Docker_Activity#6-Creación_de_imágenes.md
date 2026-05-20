@@ -43,7 +43,11 @@ Crea `public_html/index.html`:
 </html>
 ```
 
-> *Captura de pantalla aquí*
+<img width="1716" height="111" alt="image" src="https://github.com/user-attachments/assets/c0633395-077f-4c8f-8e93-26953c690426" />
+
+
+<img width="1716" height="707" alt="image" src="https://github.com/user-attachments/assets/cec5c1b2-ea23-4b83-929a-498fc34dfd3a" />
+
 
 #### Crear el Dockerfile
 
@@ -56,7 +60,11 @@ EXPOSE 80
 CMD apache2ctl -D FOREGROUND
 ```
 
-> *Captura de pantalla aquí*
+<img width="1721" height="132" alt="image" src="https://github.com/user-attachments/assets/e60005ac-30d8-4771-b05e-9920997a6b0f" />
+
+
+<img width="1714" height="711" alt="image" src="https://github.com/user-attachments/assets/8eae80f6-c1eb-4839-b798-c71c7c3a908b" />
+
 
 #### Construir la imagen
 
@@ -65,23 +73,24 @@ cd ~/docker/ejemplo1
 docker build -t mario/ejemplo1:v1 .
 ```
 
-> *Captura de pantalla aquí*
+<img width="1714" height="558" alt="image" src="https://github.com/user-attachments/assets/9c1e4358-061a-4912-a809-256ffa6f1a8c" />
+
 
 #### Ejecutar el contenedor
 
 ```bash
-docker run -d -p 8080:80 --name ejemplo1 mario/ejemplo1:v1
+docker run -d -p 8085:80 --name ejemplo1 mario/ejemplo1:v1
 ```
 
-> *Captura de pantalla aquí*
+<img width="1715" height="63" alt="image" src="https://github.com/user-attachments/assets/50ca3f87-85da-47ff-9028-0faf3e874ac4" />
+
 
 #### Acceder
 
-Desde cualquier navegador en tu red: `http://<IP_DEL_SERVIDOR>:8080`
+Desde cualquier navegador en tu red: `http://192.168.8.190:8085/`
 
-Para saber tu IP: `ip a` o `hostname -I`
+<img width="1717" height="187" alt="image" src="https://github.com/user-attachments/assets/4ba625b4-1b06-4dea-8160-29a699b52a6e" />
 
-> *Captura de pantalla aquí*
 
 ---
 
