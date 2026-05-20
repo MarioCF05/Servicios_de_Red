@@ -14,7 +14,7 @@ Llevar a cabo los ejemplos prácticos del módulo de introducción a contenedore
 
 ### 1. Instalación de Docker
 
-*(Si no lo hiciste ya en la Activity#1)*
+*Ya lo hicimos en la Activity#1 para mas informacion)*
 
 ```bash
 sudo apt update
